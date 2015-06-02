@@ -7,6 +7,20 @@ h1 {
 	font-family: 'Antic Slab', serif;
 }
 
+a {
+	font-family: 'Armata', sans-serif;
+	font-size: 3em;
+    color: white;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline ;
+}
+
 hr {
 	width: 10em;
 	border: 0;
@@ -18,7 +32,7 @@ hr {
 .section {
 	padding: 8em 0;
 	text-align: center;
-	margin: 0.3em;
+	margin: 0;
 }
 
 .section.full {
@@ -26,9 +40,13 @@ hr {
 }
 
 .section.wide {
+	float:left;
 	width: 66%;
+	overflow:hidden;
 }
 
 .section.narrow {
-	width: 33%
+	float:right;
+	width: 34%;
+	overflow:hidden;
 }
