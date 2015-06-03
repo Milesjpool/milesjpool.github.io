@@ -7,46 +7,46 @@ h1 {
 	font-family: 'Antic Slab', serif;
 }
 
-a {
-	font-family: 'Armata', sans-serif;
-	font-size: 3em;
-    color: white;
+hr {
+	width: 10em;
+	height: .3em;
+	border: none;
+	background-color: #FF4900;
 }
 
 a:link, a:visited {
     text-decoration: none;
 }
 
-a:hover, a:active {
-    text-decoration: underline ;
-}
-
-hr {
-	width: 10em;
-	border: 0;
-	height: .3em;
-	background-color: #FF4900;
-	color: #FF4900;
-}
-
-.section {
-	padding: 8em 0;
+.card {
 	text-align: center;
-	margin: 0;
-}
-
-.section.full {
+	margin: 10px;
+	background-size: 100%;
 	background-color: #171A1D;
+	padding: 100px 0;
 }
 
-.section.wide {
-	float:left;
-	width: 66%;
-	overflow:hidden;
+.project-link {
+	font-family: 'Armata', sans-serif;
+	font-size: 50px;
+    color: white;
 }
 
-.section.narrow {
-	float:right;
-	width: 34%;
-	overflow:hidden;
+
+a:hover .project-link, a:active .project-link {
+    text-decoration: underline;
+}
+
+.definition {
+	font-family: 'Crimson Text', serif;
+	font-style: italic;
+	font-size: 20px;
+    color: rgba(255,255,255,0.5);
+    padding: 0 20%;
+    line-height: 30px;
+    display: block;
+}
+
+#chromesthesia {
+	background-image: url(../image/colours.jpg);
 }
