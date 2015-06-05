@@ -61,7 +61,7 @@
 
     function togglePlay(){
         if (paused) { play(); }
-        else { pause(); }     
+        else { pause(); }
     }
 
     function play() {
