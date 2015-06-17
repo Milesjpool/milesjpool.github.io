@@ -8,7 +8,7 @@
 	$("img").mousedown(function(){ return false; });
 	
 	$("#pause").click(function(){
-		$("audio").each(function(){ 
+		$("#cloud-full-audio").each(function(){ 
 			if (this.paused == false) {
 				this.pause();
 			} else {
@@ -19,8 +19,8 @@
 
 	function bounce(element){
 		$('#char-0-Audio')[0].play();
-		$(element).animate({ "top": "70%" }, 1000, function () {
-			$(element).animate({ "top": "0%" }, 1000);
+		$(element).animate({ "top": "70%" }, 3700, function () {
+			$(element).animate({ "top": "0%" }, 3400);
 		});
 	};
 
@@ -31,8 +31,9 @@
 				if (vistaPattern[rhoClicks].indexOf(i) >= 0) $char.attr("src", vistasPaths[i]);
 				else $char.attr("src", merakiPaths[i]);
 			}
-			rhoClicks ++;
 		};
+		$('#char-2-Audio-' + (rhoClicks % 4))[0].play();
+		rhoClicks ++;
 	};
 
 	function drag(element){
@@ -42,7 +43,8 @@
 				containment: "parent",
 				scroll: false,
 				stop: function() {
-					$(this).animate({ "top": "0%" }, 1000);
+					$('#char-5-Audio')[0].play();
+					$(this).animate({ "top": "0%" }, 3500);
 				}
 			});
 		});
@@ -65,11 +67,6 @@ var vistaPattern = [
 [0, 2, 3, 5],
 [],
 [0, 1, 3, 4, 5],
-[],
-[1,2,3,5],
-[],
-[0,2,4,5],
-[0,1,3,4,5],
 [],
 [0,1,2,3,4,5],
 [],
