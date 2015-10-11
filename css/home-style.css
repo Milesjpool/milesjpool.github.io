@@ -14,6 +14,7 @@ h2 {
 	font-size: 50px;
     color: white;
     margin: 10px;
+    text-shadow: 0px 1px 4px #000000; 
 }
 
 a {
@@ -31,7 +32,6 @@ hr.heading {
 hr.definition {
 	width: 10%;
 	height: 2px;
-	margin-bottom: 10px;
 	border: none;
 	background-color: rgba(255,255,255,0.5);
 }
@@ -42,11 +42,28 @@ hr.definition.hidden {
 
 div.card {
 	text-align: center;
-	margin: 10px;
+	margin: 1%;
 	background-size: 100%;
 	background-color: #171A1D;
 	padding: 70px 0;
+	height: 20% !important;
+	background-size: cover;
 }
+
+@media screen and (min-width: 800px) {
+    div.card.wide {
+        width: 58%;
+        background-repeat: no-repeat;
+        float: left;
+    }
+
+    div.card.narrow {
+        width: 38%;
+        background-repeat: no-repeat;
+        float: right;
+    }
+}
+
 
 div.card.no-bg {
 	background-image: none !important;	
@@ -60,6 +77,8 @@ text.definition {
     padding: 0 20%;
     line-height: 30px;
     display: block;
+    height: 100px; 
+    overflow: ellipsis;
 }
 
 text.definition.hidden {
@@ -72,6 +91,11 @@ text.definition.hidden {
 
 #chromesthesia {
 	background-image: url(../image/colours.jpg);
+}
+
+#bokeh {
+	background-image: url(../image/bokeh.jpg);
+	background-position: center;
 }
 
 #meraki {
