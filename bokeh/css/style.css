@@ -1,0 +1,19 @@
+﻿html, body{
+	margin: 0;
+	padding: 0;
+}
+
+div.albums{
+	margin: 5px;
+	height: 100%;
+	width: 100%;
+}
+
+div.album{
+	height: 10%;
+	width: 100%;
+}
+
+img.image{
+	max-height: 200px;
+}
