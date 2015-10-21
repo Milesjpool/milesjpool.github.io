@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
 
+    var assetRoot = "https://googledrive.com/host/0B1_eH69z5SBWZWw4ejJ3UWRtUE0/survey/";
     var numOfTracks = tracks.length;
     var trackId = Math.floor(Math.random() * numOfTracks);
     var paused = true;
@@ -65,7 +66,7 @@
     }
 
     function play() {
-        $("#playPause").attr("src", "image/pause.png");
+        $("#playPause").attr("src", assetRoot + "image/pause.png");
         $("#intro").animate({ "top": "-50%" }, 200, function () {
             $(".colour").css("cursor", "pointer");
             $("#intro").hide();
@@ -75,7 +76,7 @@
     }
 
     function pause() {
-        $("#playPause").attr("src", "image/play.png");
+        $("#playPause").attr("src", assetRoot + "image/play.png");
         $("#intro").show();
         $(".colour").css("cursor", "default");
         $("#intro").animate({ "top": "13%" }, 200);
@@ -87,7 +88,7 @@
 
     function playTrack(id) {
         var $source = tracks[id];
-        var $newSource = '<source id="audioSource" src="audio/' + $source + '.mp3" type="audio/mp3"/>';
+        var $newSource = '<source id="audioSource" src="' + assetRoot + 'audio/' + $source + '.mp3" type="audio/mp3"/>';
         $("#audioSource").replaceWith($newSource);
         $("audio").load();
     }
