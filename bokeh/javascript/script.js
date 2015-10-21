@@ -1,17 +1,29 @@
 ﻿$(document).ready(function () {
+	
 	albums.forEach(function(album){
-		var albumName = album.albumName;
-		var albumRow = '<div id="'+album.albumName+'" class="album"></div>';
-		$('.albums').append(albumRow);
-		album.images.forEach(function(image){
-			var path = "image/"+albumName+"/"+image;
-			var imageDiv = '<img src="'+path+'" class="image"></img>';
-			$('#'+albumName).append(imageDiv);
-		});
+		var numberOfImages = album.images.length;
+
+		if (numberOfImages > 0) {
+			AddAlbum(album);
+		}
 	});
+
 });
 
-var albums = [
-{albumName : "difference", images : ["1.png", "2.png", "3.png"]},
-{albumName : "multiply", images : ["1.png", "2.png", "3.png"]}
-];
+function AddAlbum(album){
+	var albumDiv = $('<div id="'+album.Name+'" class="album"></div>');
+	albumDiv.append('<h2 class="album-title">'+album.Name+'</h2>')
+	$('.albums').append(albumDiv);
+
+	FillAlbum(albumDiv, album);
+}
+
+function FillAlbum(albumDiv, album){
+	var numberOfImages = album.images.length;
+
+	album.images.forEach(function(image, index){
+		var imageDiv = '<img src="' + assetRoot + album.Name + "/" + image + '" class="image" style="z-index:'+ ( - 1 - index) +'"></img>';
+		albumDiv.append(imageDiv);
+	});
+}
+
