@@ -54,12 +54,18 @@ div.card {
     div.card.wide {
         width: 58%;
         background-repeat: no-repeat;
-        float: left;
     }
 
     div.card.narrow {
         width: 38%;
         background-repeat: no-repeat;
+    }
+
+    div.card.left {
+        float: left;
+    }
+
+    div.card.right {
         float: right;
     }
 }
@@ -100,4 +106,8 @@ text.definition.hidden {
 
 #meraki {
 	background-image: url(../image/geometric.jpg);
+}
+
+#ebullience {
+	background-image: url(../image/ebullience.jpg);
 }
