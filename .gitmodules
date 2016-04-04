@@ -1,0 +1,3 @@
+[submodule "chromesthesia"]
+	path = chromesthesia
+	url = https://github.com/Milesjpool/chromesthesia-survey.git
