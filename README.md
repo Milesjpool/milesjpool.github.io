@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+<a href="http://milesjpool.github.io">My First Website</a>
+================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my first ever own website, created using [GitHub Pages](https://pages.github.com/) and [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
