@@ -1,3 +1,18 @@
 .content {
-  flex-direction: row;
+  border-top: solid var(--pallet-fg-secondary) 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  color: var(--pallet-fg-primary);
+  font-weight: bold;
+  font-size: x-large;
+
+  align-items: center;
+  justify-content: space-evenly;
+
+  img {
+    max-height: 70%;
+    max-width: 70%;
+  }
 }

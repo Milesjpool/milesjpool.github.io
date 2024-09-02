@@ -2,11 +2,11 @@ import { COLOUR_FG_SECONDARY } from "styles";
 import { ReactComponent as GithubGem } from "icons/github_gem.svg";
 import { ReactComponent as LinkedInGem } from "icons/linkedin_gem.svg";
 
-import "./Footer.css";
+import "./Banner.css";
 
-export function Footer() {
+export function Banner() {
   return (
-    <footer className="footer">
+    <header className="banner">
       <div className="item-row title">
         <img src="/alien_256.png" alt="alien" className="icon" />
         <span className="text">
@@ -24,7 +24,7 @@ export function Footer() {
           <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY}/>
         </a>
       </div>
-    </footer>
+    </header>
   );
 }
 

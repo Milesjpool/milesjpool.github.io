@@ -1,7 +1,8 @@
-.footer {
+.banner {
   padding: 0.5em 1em;
   background-color: var(--pallet-bg-primary);
   border-top: solid var(--pallet-fg-secondary) 4px;
+  border-bottom: solid var(--pallet-fg-secondary) 4px;
   justify-content: left;
   
   display: flex;
