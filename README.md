@@ -1,8 +1,8 @@
-<a href="http://milesjpool.github.io">My First Website</a>
-================
+# [My First Website](http://milesjpool.github.io)
+
+![example workflow](https://github.com/milesjpool/milesjpool.github.io/actions/workflows/gh-pages.yml/badge.svg)
 
 This is my first ever own website, created using [GitHub Pages](https://pages.github.com/) and [Create React App](https://github.com/facebook/create-react-app).
-
 
 ## Available Scripts
 
