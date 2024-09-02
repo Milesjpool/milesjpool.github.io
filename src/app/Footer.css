@@ -1,0 +1,37 @@
+.footer {
+  padding: 0.5em 1em;
+  background-color: var(--pallet-bg-primary);
+  border-top: solid var(--pallet-fg-secondary) 4px;
+  justify-content: left;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+
+  .item-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 0.2em;
+  }
+
+  .icon {
+    margin-right: 0.5em;
+    height: 1.5em;
+  }
+
+  .text {
+    color: var(--pallet-fg-secondary);
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-weight: bold;
+    .peek {
+      visibility: hidden;
+    }
+  }
+
+  &:hover .peek {
+    visibility: visible;
+  }
+}
