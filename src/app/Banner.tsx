@@ -7,24 +7,40 @@ import "./Banner.css";
 export function Banner() {
   return (
     <header className="banner">
-      <div className="item-row title">
-        <img src="/alien_256.png" alt="alien" className="icon" />
-        <span className="text">
-          Miles
-          <span className="peek">
-            JPool.com
-          </span>
-        </span>
+      <div className="construction-sign" >
+        <div className="text-container">UNDER CONSTRUCTION</div>
       </div>
-      <div className="item-row links">
-        <a href="https://github.milesjpool.com">
-          <GithubGem className="icon" fill={COLOUR_FG_SECONDARY}/>
-        </a>
-        <a href="https://linkedin.milesjpool.com">
-          <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY}/>
-        </a>
+      <div className="content-row">
+        <Title />
+        <ExternalLinks />
       </div>
     </header>
   );
+}
+function Title() { 
+  return (
+   < div className="item-row">
+    <img src="/alien_256.png" alt="alien" className="icon" />
+    <span className="text">
+      Miles
+      <span className="peek">
+        JPool.com
+      </span>
+    </span>
+  </div>
+  )
+}
+
+function ExternalLinks(){
+  return (
+    <div className="item-row">
+      <a href="https://github.milesjpool.com">
+        <GithubGem className="icon" fill={COLOUR_FG_SECONDARY}/>
+      </a>
+      <a href="https://linkedin.milesjpool.com">
+        <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY}/>
+      </a>
+    </div>
+  )
 }
 
