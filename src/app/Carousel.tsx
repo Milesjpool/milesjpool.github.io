@@ -1,17 +1,18 @@
 import { useState } from "react";
 import "./Carousel.css";
 import { MjpLogo } from "./CarouselItems/MjpLogo";
+import clsx from "clsx";
 
 export function Carousel() {
   const [ index, setIndex ] = useState(0);
 
   return (
     <div className='carousel'>
-      <CarouselContent index={index} items={[<MjpLogo/>]}/>
       <button 
         className='carousel-button left'
         onClick={() => setIndex(index - 1)}
       >◀</button>
+      <CarouselContent index={index} items={[<MjpLogo/>]}/>
       <button 
         className='carousel-button right'
         onClick={() => setIndex(index + 1)}>▶</button>
@@ -20,25 +21,31 @@ export function Carousel() {
 }
 
 function CarouselContent({index, items}: {index: number, items: React.ReactNode[]}) {  
-  
+
   return (
   <div className="carousel-content">
-    {/* <div className='carousel-item previous'>
-      {items[index-1 % items.length]}
-    </div>       */}
-    <CarouselItem >
+    <CarouselItem key={index-1} state="previous">
+      {items[(index-1) % items.length]}
+    </CarouselItem>
+    <CarouselItem key={index} state="current">
       {items[index % items.length]}
     </CarouselItem>
-    {/* <div className='carousel-item next'>
-      {items[index+1 % items.length]}
-    </div> */}
+    <CarouselItem key={index+1} state="next">
+      {items[(index+1) % items.length]}
+    </CarouselItem>
   </div>
   );
 }
 
-function CarouselItem({ children }: { children: React.ReactNode }) {
+type CarouselItemProps = {
+  key: number,
+  state: 'previous' | 'current' | 'next'
+  children: React.ReactNode,
+}
+
+function CarouselItem({ key, state, children }: CarouselItemProps) {
   return (
-    <div className='carousel-item'>
+    <div key={key} className={clsx('carousel-item', state)}>
       {children}
     </div>
   );
