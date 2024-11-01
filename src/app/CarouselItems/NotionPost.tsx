@@ -19,7 +19,7 @@ export function NotionPost({title, emoji, headerImage, href}: NotionPostProps) {
       <img 
         className="header-image"
         src={headerImage}
-        alt="Header image" />
+        alt="decorative header" />
       <div className="body">
         <div className="emoji">{emoji}</div>
         <a href={href} target="_blank" rel="noopener noreferrer">
@@ -30,7 +30,7 @@ export function NotionPost({title, emoji, headerImage, href}: NotionPostProps) {
             <AuthorIcon/>
             Author</div>
           <div className="value">
-            <img src={author.image} className="author-image"/>
+            <img src={author.image} className="author-image" alt="author" />
             {author.name}
           </div>
         </div>
