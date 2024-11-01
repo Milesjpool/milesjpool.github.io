@@ -1,6 +1,6 @@
 .banner {
   background-color: var(--pallet-bg-primary);
-  border-top: solid var(--pallet-fg-secondary) 4px;
+  border-top: solid var(--pallet-fg-secondary) 6px;
   border-bottom: solid var(--pallet-fg-secondary) 4px;
   
   font-size: calc(10px + 2vmin);
@@ -14,32 +14,35 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.2em;
-    padding: 0.5em;
+    padding: 0.3em;
   }
 
   .construction-sign {
     background-image: repeating-linear-gradient(
       -45deg,
       var(--pallet-fg-secondary),
-      var(--pallet-fg-secondary) 25px,
+      var(--pallet-fg-secondary) 20px,
       var(--pallet-bg-primary) 25px,
-      var(--pallet-bg-primary) 50px
+      var(--pallet-bg-primary) 45px,
+      var(--pallet-fg-secondary) 50px
     );
-    padding: 0.1em 0;
+    padding: 0.2em 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    overflow: hidden;
     
     .text-container {
-      rotate: -2deg;
-      padding: 0 0.7em 0.1em 0.7em ;
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.8);
-      color: rgb(180, 47, 47);
+      rotate: -5deg;
+      padding: 0 3em 0.1em 3em ;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      color: rgb(198, 58, 34);
       font-weight: bold;
-      border-radius: 0.3em;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;  
-      font-size: 0.6em;
+      font-size: 1em;
+      box-shadow: 1em 0 .8em rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -56,7 +59,7 @@
 
 .icon {
   margin-right: 0.5em;
-  height: 1.5em;
+  height: 1.2em;
 }
 
 .text {

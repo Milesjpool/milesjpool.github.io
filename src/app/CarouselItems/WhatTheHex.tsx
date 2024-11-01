@@ -8,11 +8,9 @@ export function WhatTheHex() {
       <img className="logo" src="/what-the-hex/logo.png" alt="What the Hex? logo" />
 
       <div className="description-text">
-        <hr/>
-        A simple colour guessing-game.<br/>
-        Built as an excercise to learn Kotlin, and the Google Play development lifecycle.<br/>
-        <br/>
-        🎨
+        <i>The colour guessing-game</i><br/>
+        <span className="emoji"> 🎨</span><br/>
+        Built as an excercise to learn <i>Kotlin</i>, and the <i>Google Play</i> development lifecycle.<br/>
       </div>
     </div>
     
