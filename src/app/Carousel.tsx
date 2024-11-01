@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Carousel.css";
-import { MjpLogo } from "./CarouselItems/MjpLogo";
 import clsx from "clsx";
+import { CarouselItemSet } from "./CarouselItems";
 
 export function Carousel() {
   const [ index, setIndex ] = useState(0);
@@ -12,7 +12,7 @@ export function Carousel() {
         className='carousel-button left'
         onClick={() => setIndex(index - 1)}
       >◀</button>
-      <CarouselContent index={index} items={[<MjpLogo/>]}/>
+      <CarouselContent index={index} items={CarouselItemSet}/>
       <button 
         className='carousel-button right'
         onClick={() => setIndex(index + 1)}>▶</button>
