@@ -21,12 +21,14 @@ function Title() {
   return (
    < div className="item-row">
     <img src="/alien_256.png" alt="alien" className="icon" />
-    <span className="text">
-      Miles
-      <span className="peek">
-        JPool.com
+    <a href="/">
+      <span className="text">
+        Miles
+        <span className="peek">
+          JPool.com
+        </span>
       </span>
-    </span>
+    </a>
   </div>
   )
 }
