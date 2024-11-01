@@ -1,9 +1,9 @@
 :root {
   --pallet-fg-primary: #583281;
   --pallet-fg-secondary: #363732;
-  --pallet-fg-tertiary: #FF3C38;
-  --pallet-bg-primary: #F4D35E;
-  --pallet-bg-secondary: #9FC2CC;
+  --pallet-fg-tertiary: #cb1f1c;
+  --pallet-bg-primary: #ffd747;
+  --pallet-bg-secondary: #caf4ff;
 }
 
 body {
