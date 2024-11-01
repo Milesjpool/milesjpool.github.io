@@ -43,9 +43,9 @@ type CarouselItemProps = {
   children: React.ReactNode,
 }
 
-function CarouselItem({ key, state, children }: CarouselItemProps) {
+function CarouselItem({ state, children }: CarouselItemProps) {
   return (
-    <div key={key} className={clsx('carousel-item', state)}>
+    <div className={clsx('carousel-item', state)}>
       {children}
     </div>
   );

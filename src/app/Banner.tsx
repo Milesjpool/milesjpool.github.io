@@ -7,12 +7,12 @@ import "./Banner.css";
 export function Banner() {
   return (
     <header className="banner">
-      <div className="construction-sign" >
-        <div className="text-container">ALWAYS UNDER CONSTRUCTION</div>
-      </div>
       <div className="content-row">
         <Title />
         <ExternalLinks />
+      </div>
+      <div className="construction-sign" >
+        <div className="text-container">ALWAYS UNDER CONSTRUCTION</div>
       </div>
     </header>
   );

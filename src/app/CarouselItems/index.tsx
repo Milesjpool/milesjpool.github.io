@@ -1,8 +1,10 @@
 import { MjpLogo } from "./MjpLogo";
 import { NotionPost } from "./NotionPost";
+import { WhatTheHex } from "./WhatTheHex";
 
 export const CarouselItemSet = [
   <MjpLogo/>,
+  <WhatTheHex />,
   <NotionPost 
     emoji="🎛️"
     title="Elevating my desk"
