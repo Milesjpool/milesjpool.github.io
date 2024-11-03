@@ -11,17 +11,17 @@ export function GithubLink({className,  url, statusBadge }: GithubLinkProps) {
   return (
     <div className={clsx("github-link", className)}>
       <div className="heading" >
-        <a href={url}  target="_blank" className="name">
+        <a href={url}  target="_blank" className="name" rel="noopener noreferrer">
           <GithubGem className="icon"/>
           {url.split('/').filter(Boolean).pop()}
         </a>
       </div>
       <div className="subheading" >
         {statusBadge ? (
-          <a href={statusBadge.href} target="_blank" >
+          <a href={statusBadge.href} target="_blank" rel="noopener noreferrer">
             <img src={url + statusBadge.path} alt="alien" />
           </a>) : (
-          <a href={url} target="_blank">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             <span>{url}</span>
           </a>
         )}

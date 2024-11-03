@@ -36,10 +36,10 @@ function Title() {
 function ExternalLinks(){
   return (
     <div className="item-row">
-      <a href="https://github.milesjpool.com" target="_blank" >
+      <a href="https://github.milesjpool.com" target="_blank" rel="noopener noreferrer">
         <GithubGem className="icon" fill={COLOUR_FG_SECONDARY}/>
       </a>
-      <a href="https://linkedin.milesjpool.com" target="_blank" >
+      <a href="https://linkedin.milesjpool.com" target="_blank" rel="noopener noreferrer">
         <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY}/>
       </a>
     </div>
