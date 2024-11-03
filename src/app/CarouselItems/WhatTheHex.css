@@ -12,11 +12,11 @@
     box-sizing: border-box;
 
     .hash-icon {
-        max-height: 100%;
-        max-width: 100%;
+        height: 100%;
+        min-width: 100%;
         position: absolute;
-        bottom: -10%;
-        right: -5%;
+        bottom: -15%;
+        right: -30%;
     }
     &::after {
         content: '';
@@ -68,7 +68,7 @@
 
     .mockup {
         position: absolute;
-        top: 5%;
+        bottom: 20%;
         right: 5%;
         z-index: 1;
         max-width: 90%;
@@ -80,7 +80,7 @@
 
         bottom: 1.5em;
         right: 1.5em;
-        height: 2em;
+        height: 2.5em;
         max-width: calc(100% - 3em);
     }
 }

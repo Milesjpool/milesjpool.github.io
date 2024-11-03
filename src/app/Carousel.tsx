@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "./Carousel.css";
 import clsx from "clsx";
-import { CarouselItemSet } from "./CarouselItems";
 
-export function Carousel() {
+type CarouselProps = {
+  items: React.ReactNode[]
+};
+
+export function Carousel({items}: CarouselProps) {
   const [ index, setIndex ] = useState(0);
 
   return (
@@ -12,7 +15,7 @@ export function Carousel() {
         className='carousel-button left'
         onClick={() => setIndex(index - 1)}
       >◀</button>
-      <CarouselContent index={index} items={CarouselItemSet}/>
+      <CarouselContent index={index} items={items}/>
       <button 
         className='carousel-button right'
         onClick={() => setIndex(index + 1)}>▶</button>
@@ -22,16 +25,18 @@ export function Carousel() {
 
 function CarouselContent({index, items}: {index: number, items: React.ReactNode[]}) {  
 
+  const itemIndex = (index: number) => mod(index, items.length);
+
   return (
   <div className="carousel-content">
     <CarouselItem key={index-1} state="previous">
-      {items[(index-1) % items.length]}
+      {items[itemIndex(index-1)]}
     </CarouselItem>
     <CarouselItem key={index} state="current">
-      {items[index % items.length]}
+      {items[itemIndex(index)]}
     </CarouselItem>
     <CarouselItem key={index+1} state="next">
-      {items[(index+1) % items.length]}
+      {items[itemIndex(index+1)]}
     </CarouselItem>
   </div>
   );
@@ -49,4 +54,10 @@ function CarouselItem({ state, children }: CarouselItemProps) {
       {children}
     </div>
   );
+}
+
+
+// Helper function to get the real, mathematical modulus of a number
+function mod(n: number, m: number) {
+  return ((n % m) + m) % m;
 }

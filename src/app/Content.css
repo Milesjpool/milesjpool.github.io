@@ -1,5 +1,4 @@
 .content {
-  border-top: solid var(--pallet-fg-secondary) 4px;
   overflow: hidden;
 
   color: var(--pallet-fg-primary);

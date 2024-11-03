@@ -48,6 +48,7 @@
 
   overflow: hidden;
   border-radius: 2em;
+  background-color: white;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   rotate: 2deg;
 
@@ -61,6 +62,7 @@
 
     &::after {
       opacity: 0.5;
+      pointer-events: all;
     }
   }
   &.next {

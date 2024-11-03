@@ -1,7 +1,6 @@
 .app {
   text-align: left;
   background-color: var(--pallet-bg-secondary);
-  /* min-height: 100vh; */
   height: 100vh;
   display: flex;
   flex-direction: column; 

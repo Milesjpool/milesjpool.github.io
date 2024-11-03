@@ -2,21 +2,19 @@ import { COLOUR_FG_SECONDARY } from "styles";
 import { ReactComponent as GithubGem } from "icons/github_gem.svg";
 import { ReactComponent as LinkedInGem } from "icons/linkedin_gem.svg";
 
-import "./Banner.css";
+import "./Footer.css";
 
-export function Banner() {
+export function Footer() {
   return (
-    <header className="banner">
+    <header className="footer">
       <div className="content-row">
         <Title />
         <ExternalLinks />
       </div>
-      <div className="construction-sign" >
-        <div className="text-container">ALWAYS UNDER CONSTRUCTION</div>
-      </div>
     </header>
   );
 }
+
 function Title() { 
   return (
    < div className="item-row">
@@ -25,7 +23,9 @@ function Title() {
       <span className="text">
         Miles
         <span className="peek">
-          JPool.com
+          <span className="j">J</span>
+          Pool
+          <span className="com">.com</span>
         </span>
       </span>
     </a>
@@ -36,10 +36,10 @@ function Title() {
 function ExternalLinks(){
   return (
     <div className="item-row">
-      <a href="https://github.milesjpool.com">
+      <a href="https://github.milesjpool.com" target="_blank" >
         <GithubGem className="icon" fill={COLOUR_FG_SECONDARY}/>
       </a>
-      <a href="https://linkedin.milesjpool.com">
+      <a href="https://linkedin.milesjpool.com" target="_blank" >
         <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY}/>
       </a>
     </div>

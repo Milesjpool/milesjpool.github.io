@@ -1,5 +1,7 @@
+import { GithubLink } from "app/Components/GithubLink";
 import "./NotionPost.css";
 import { ReactComponent as AuthorIcon } from "icons/notion/people.svg";
+import { GithubRepo } from "types/GithubRepo";
 
 const author = {
   name: "Miles Pool",
@@ -11,9 +13,10 @@ type NotionPostProps = {
   title: string;
   headerImage: string;
   href: string;
+  githubRepo?: GithubRepo
 }
 
-export function NotionPost({title, emoji, headerImage, href}: NotionPostProps) {
+export function NotionPost({title, emoji, headerImage, href, githubRepo}: NotionPostProps) {
   return (
     <div className="notion-post">
       <img 
@@ -34,6 +37,7 @@ export function NotionPost({title, emoji, headerImage, href}: NotionPostProps) {
             {author.name}
           </div>
         </div>
+        {githubRepo && <GithubLink {...githubRepo}/>}
       </div>
     </div>
   );

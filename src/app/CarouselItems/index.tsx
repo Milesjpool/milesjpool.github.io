@@ -1,15 +1,16 @@
-import { MjpLogo } from "./MjpLogo";
+import { Home } from "./Home";
 import { NotionPost } from "./NotionPost";
 import { WhatTheHex } from "./WhatTheHex";
 
 export const CarouselItemSet = [
-  <MjpLogo/>,
+  <Home/>,
   <WhatTheHex />,
   <NotionPost 
     emoji="🎛️"
     title="Elevating my desk"
     headerImage="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf"
     href="https://milesjpool.notion.site/Elevating-my-desk-127ea37a280e808ab350ec64626f20ca"
+    githubRepo={{url: "https://github.com/Milesjpool/standing-desk"}}
   />,
   <NotionPost 
     emoji="🧊"

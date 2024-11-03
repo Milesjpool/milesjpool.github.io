@@ -15,7 +15,7 @@ export function WhatTheHex() {
     </div>
     
     <img className="mockup" src="/what-the-hex/mockup.png" alt="screenshot mockup" />
-    <a href="https://play.google.com/store/apps/details?id=com.milesjpool.whatthehex"> 
+    <a href="https://play.google.com/store/apps/details?id=com.milesjpool.whatthehex" target="_blank" > 
         <img className="play-badge" src="/google-play-badge.png" alt="Google Play badge" />
     </a>
   </div>)

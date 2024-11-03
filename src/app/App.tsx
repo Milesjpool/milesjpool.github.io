@@ -1,12 +1,12 @@
 import "./App.css"
+import { Footer } from "./Banners/Footer";
 import { Content } from "./Content";
-import { Banner } from "./Banner";
 
 export function App() {
   return (
     <div className="app">
         <Content />
-        <Banner />
+        <Footer />
     </div>
   );
 }
