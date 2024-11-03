@@ -1,4 +1,5 @@
 .notion-post {
+    position: relative;
     background-color: white;
     width: 100%;
     height: 100%;
@@ -22,7 +23,7 @@
         display: flex;
         flex-direction: column;
         align-items: start;
-        padding: 1.5em;
+        padding: 1em;
         padding-left: 2em;
         padding-top: 0;
 
@@ -33,18 +34,22 @@
             padding-left: 0.1em;
             font-size: 100px;
         }
+
         a {
             color: inherit;
             text-decoration: none;
+
             &:hover {
                 text-decoration: underline;
                 cursor: pointer;
             }
         }
+
         h1 {
             margin-top: 0;
             margin-bottom: 0.5em;
         }
+
         .attribute-row {
             display: flex;
             flex-direction: row;
@@ -65,22 +70,47 @@
                 align-items: center;
                 gap: 0.4em;
             }
+
             svg {
                 height: 1em;
                 fill: rgb(120, 119, 116);
             }
+
             img {
                 height: 1em;
             }
+
             .author-image {
                 border-radius: 50%;
                 height: 1.2em;
             }
         }
 
-        .github-link{
-            max-width: calc(100% - 3em);
+        .spacer {
+            min-height: 1em;
+            flex-grow: 1;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: row;
             align-self: flex-end;
+            gap: 0.5em;
+            align-items: center;
+            flex-shrink: 1;
+            max-width: 100%;
+
+            .notion-link {
+                a {
+                    display: flex;
+                    padding: 0.2em;
+
+                    .icon {
+                        margin-right: 0;
+                        height: 2.5em;
+                    }
+                }
+            }
         }
     }
 }

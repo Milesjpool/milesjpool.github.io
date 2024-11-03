@@ -32,8 +32,8 @@ export function Home() {
   
         <div className="description">
           <span>
-            Built by hand using <i>Typescript</i> and <i>React</i>.<br/>
-            Deployed with <i>GitHub Pages</i>.
+            Handmade with <i>Typescript</i> and <i>React</i>.<br/>
+            Hosted through <i>GitHub Pages</i>.
           </span>
 
           <div className="gems">

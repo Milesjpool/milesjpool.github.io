@@ -1,0 +1,11 @@
+.google-play-tag {
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    max-width: calc(100% - 3em);
+
+    a {
+        display: flex;
+        height: 2.8em;
+    }
+}

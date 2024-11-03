@@ -5,10 +5,9 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: flex-start;
 
-    padding: 1.5em;
+    padding: 1em;
     box-sizing: border-box;
 
     .hash-icon {
@@ -18,6 +17,7 @@
         bottom: -15%;
         right: -30%;
     }
+
     &::after {
         content: '';
         position: absolute;
@@ -32,35 +32,46 @@
         z-index: 2;
         width: 10em;
         min-width: 50%;
-        height: calc(100% - 2em);
+        height: calc(100% - 3em);
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        .logo{
+        @media (max-width: 600px) {
+            min-width: 90%;
+        }
+
+        .logo {
             position: relative;
             max-width: 100%;
             max-height: 70%;
             padding-bottom: 1em;
-            left: 1em;
+            left: 0.5em;
+
+            @media (max-width: 600px) {
+                max-width: 10em;
+                align-self: flex-start;
+                padding-bottom: 3em;
+            }
         }
 
         .description-text {
             background-color: white;
             border-radius: 1em 0.2em;
             rotate: -2deg;
-    
+
             box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.1);
 
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                  
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
             font-weight: bold;
             font-size: 0.8em;
             text-overflow: ellipsis;
             text-align: center;
             padding: 1em;
-            color: var(--pallet-fg-secondary);            
+            color: var(--pallet-fg-secondary);
         }
+
         .emoji {
             font-size: 2em;
         }
@@ -71,16 +82,21 @@
         bottom: 20%;
         right: 5%;
         z-index: 1;
-        max-width: 90%;
+        max-width: 45%;
         max-height: 70%;
+
+        @media (max-width: 600px) {
+            top: 2%;
+            width: 30%;
+            min-width: 6em;
+        }
     }
-    .play-badge {
+
+    .google-play-tag {
         position: absolute;
         z-index: 3;
 
-        bottom: 1.5em;
-        right: 1.5em;
-        height: 2.5em;
-        max-width: calc(100% - 3em);
+        bottom: 1em;
+        right: 1em;
     }
 }
