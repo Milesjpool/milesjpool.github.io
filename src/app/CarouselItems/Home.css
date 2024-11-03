@@ -66,7 +66,7 @@
       display: flex;
       flex-direction: column;
       gap: 1em;
-      padding: 1em;
+      padding: 1.5em;
       color: var(--pallet-fg-primary);
       background-color: rgba(255, 255, 255, 0.8);
       width: 100%;
@@ -94,9 +94,12 @@
   }
   
   .banner {
+    position: relative;
+    top: -1em;
     width: 120%;
     rotate: -2deg;
     box-shadow: 0em 0.1em 0.1em rgba(0, 0, 0, 0.3);
+    min-height: 2em;
   }
 
   .github-link {

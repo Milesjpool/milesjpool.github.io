@@ -21,15 +21,17 @@
     .body {
         display: flex;
         flex-direction: column;
-        position: relative;
-        top: -2.7em;
-        padding: 0 2em;
+        align-items: start;
+        padding: 1.5em;
+        padding-left: 2em;
+        padding-top: 0;
+
+        margin-top: -65px;
         flex-grow: 1;
 
         .emoji {
             padding-left: 0.1em;
             font-size: 100px;
-            top: 40%;
         }
         a {
             color: inherit;
@@ -77,10 +79,8 @@
         }
 
         .github-link{
-            position: absolute;
-            bottom: -1.2em;
-            right: 1.5em;
             max-width: calc(100% - 3em);
+            align-self: flex-end;
         }
     }
 }

@@ -1,4 +1,5 @@
 .carousel {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -30,6 +31,10 @@
     &.right {
       right: 10px;
     }
+
+    @media (max-width: 600px) {
+      bottom: 1em;
+    }
   }
 }
 
@@ -45,6 +50,13 @@
   height: calc(100% - 2em);
   width: calc(100% - 6em);
   margin: 1em 3em;
+
+  @media (max-width: 600px) {
+    margin: 2em 0.5em;
+    margin-bottom: 4em;
+    height: calc(100% - 6em);
+    width: calc(100% - 1em);
+  }
 
   overflow: hidden;
   border-radius: 2em;
