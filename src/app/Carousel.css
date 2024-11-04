@@ -1,6 +1,5 @@
 .carousel {
   position: relative;
-  display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -59,7 +58,6 @@
     width: calc(100% - 2em);
   }
 
-  overflow: hidden;
   border-radius: 1em;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   rotate: 2deg;

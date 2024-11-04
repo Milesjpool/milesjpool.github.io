@@ -3,7 +3,6 @@
   border-bottom: solid var(--pallet-fg-secondary) 4px;
 
   font-size: x-large;
-  display: flex;
 
   .content-row {
     justify-content: space-between;

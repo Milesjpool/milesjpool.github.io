@@ -6,12 +6,12 @@ import "./Footer.css";
 
 export function Footer() {
   return (
-    <header className="footer bg-secondary">
+    <footer className="footer flex bg-secondary">
       <div className="content-row flex-row">
         <Title />
         <ExternalLinks />
       </div>
-    </header>
+    </footer>
   );
 }
 

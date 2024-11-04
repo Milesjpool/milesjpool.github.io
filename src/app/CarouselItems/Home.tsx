@@ -20,7 +20,7 @@ export function Home() {
   return (
     <div className="home flex-col">
       <div className="background" />
-      <div className="content flex-col">
+      <div className="content flex-col grow">
         <div className="title">
           <span className="prompt">&gt;</span>
           Miles&#8203;
@@ -47,12 +47,12 @@ export function Home() {
               <GithubPagesGem className="icon" fill={COLOUR_FG_SECONDARY} />
             </a>
           </div>
+          <ConstructionSign className="banner" />
         </div>
 
-        <ConstructionSign className="banner" />
         <div className="signature flex-col">
           <span>
-            Enjoy your stay
+            &gt; Enjoy your stay █
           </span>
           <div>
             <img src="/alien_256.png" alt="alien" className="icon" />

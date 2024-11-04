@@ -28,10 +28,10 @@ export function NotionPost({ title, emoji, headerImage, href, githubRepo }: Noti
   return (
     <div className="notion-post bg-white flex-col">
       <img
-        className="header-image"
+        className="header-image flex shrink overflow-hidden"
         src={headerImage}
         alt="decorative header" />
-      <div className="body flex-col">
+      <div className="body flex-col grow">
         <div className="emoji">{emoji}</div>
         <a href={href} target="_blank" rel="noopener noreferrer">
           <h1>{title}</h1>
@@ -45,7 +45,7 @@ export function NotionPost({ title, emoji, headerImage, href, githubRepo }: Noti
             {author.name}
           </div>
         </div>
-        <div className="spacer" />
+        <div className="spacer grow" />
         <LinksBlock links={links} />
       </div>
     </div>
@@ -66,7 +66,7 @@ function LinksBlock({ links }: { links: React.ReactNode[] }) {
     return links.slice(0, maxLinks)
   }, [links, viewWidth]);
 
-  return <div className="links flex-row">
+  return <div className="links flex-row shrink">
     {displayedLinks}
   </div>;
 }
@@ -74,7 +74,7 @@ function LinksBlock({ links }: { links: React.ReactNode[] }) {
 function NotionLink() {
   return (
     <div className="notion-link">
-      <a href="https://notion.so" target="_blank" rel="noopener noreferrer">
+      <a className="flex" href="https://notion.so" target="_blank" rel="noopener noreferrer">
         <NotionGem className="icon" fill={COLOUR_FG_SECONDARY} />
       </a>
     </div>

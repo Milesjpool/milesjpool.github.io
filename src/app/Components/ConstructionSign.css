@@ -1,7 +1,5 @@
 .construction-sign {
-  display: flex;
   position: relative;
-  overflow: hidden;
   width: 100%;
   height: 2em;
   border-top: solid var(--pallet-fg-secondary) 2px;

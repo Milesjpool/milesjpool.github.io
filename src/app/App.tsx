@@ -1,13 +1,16 @@
-import "./App.css"
 import { Footer } from "./Footer";
-import { Content } from "./Content";
+import { Carousel } from "./Carousel";
+import { CarouselItemSet } from "./CarouselItems";
+
+import "./App.css"
 
 export function App() {
   return (
     <div className="app flex-col bg-primary">
-      <Content />
+      <div className="grow overflow-hidden">
+        <Carousel items={CarouselItemSet} />
+      </div>
       <Footer />
     </div>
   );
 }
-

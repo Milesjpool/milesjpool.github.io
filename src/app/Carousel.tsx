@@ -10,7 +10,7 @@ export function Carousel({ items }: CarouselProps) {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className='carousel'>
+    <div className='carousel flex'>
       <button
         className='carousel-button left'
         onClick={() => setIndex(index - 1)}
@@ -50,7 +50,7 @@ type CarouselItemProps = {
 
 function CarouselItem({ state, children }: CarouselItemProps) {
   return (
-    <div className={clsx('carousel-item bg-white', state)}>
+    <div className={clsx('carousel-item bg-white overflow-hidden', state)}>
       {children}
     </div>
   );

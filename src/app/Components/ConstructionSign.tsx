@@ -3,7 +3,7 @@ import "./ConstructionSign.css";
 
 export function ConstructionSign({ className }: { className?: string }) {
   return (
-    <div className={clsx("construction-sign", className)}>
+    <div className={clsx("construction-sign flex overflow-hidden", className)}>
       <div className="bg left" />
       <div className="bg right" />
       <div className="text-container bg-white">
