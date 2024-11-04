@@ -61,7 +61,7 @@ export function Home() {
         </div>
 
       </div>
-      <GithubLink {...thisRepo} />
+      <GithubLink {...thisRepo} lightMode={true} />
     </div>
   );
 }

@@ -5,14 +5,15 @@ import clsx from "clsx";
 
 type GithubLinkProps = GithubRepo & {
   className?: string;
+  lightMode?: boolean;
 };
 
-export function GithubLink({ className, url, statusBadge }: GithubLinkProps) {
+export function GithubLink({ className, lightMode, url, statusBadge }: GithubLinkProps) {
   return (
-    <div className={clsx("github-link flex-col shrink overflow-hidden", className)}>
+    <div className={clsx("github-link flex-col shrink overflow-hidden", className, lightMode && 'light')}>
       <div className="heading shrink overflow-hidden" >
         <a href={url} target="_blank" className="overflow-hidden" rel="noopener noreferrer">
-          <GithubGem fill="white" className="icon" />
+          <GithubGem className="icon" />
           {url.split('/').filter(Boolean).pop()}
         </a>
       </div>
@@ -26,5 +27,5 @@ export function GithubLink({ className, url, statusBadge }: GithubLinkProps) {
           </a>
         )}
       </div>
-    </div>);
+    </div >);
 }
