@@ -7,12 +7,12 @@ type GithubLinkProps = GithubRepo & {
   className?: string;
 };
 
-export function GithubLink({className,  url, statusBadge }: GithubLinkProps) {
+export function GithubLink({ className, url, statusBadge }: GithubLinkProps) {
   return (
-    <div className={clsx("github-link", className)}>
+    <div className={clsx("github-link flex-col", className)}>
       <div className="heading" >
-        <a href={url}  target="_blank" className="name" rel="noopener noreferrer">
-          <GithubGem className="icon"/>
+        <a href={url} target="_blank" className="name" rel="noopener noreferrer">
+          <GithubGem className="icon" />
           {url.split('/').filter(Boolean).pop()}
         </a>
       </div>

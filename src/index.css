@@ -1,9 +1,10 @@
 :root {
   --pallet-fg-primary: #583281;
   --pallet-fg-secondary: #363732;
-  --pallet-fg-tertiary: #cb1f1c;
-  --pallet-bg-primary: #ffe356;
-  --pallet-bg-secondary: #caf4ff;
+  --pallet-bg-primary: #abecfd;
+  --pallet-bg-secondary: #ffe356;
+
+  --monospace-font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 body {
@@ -13,4 +14,28 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  height: 1.2em;
 }

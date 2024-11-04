@@ -1,14 +1,12 @@
 .footer {
-  background-color: var(--pallet-bg-primary);
+  background-color: var(--pallet-bg-secondary);
   border-top: solid var(--pallet-fg-secondary) 4px;
   border-bottom: solid var(--pallet-fg-secondary) 4px;
-  
-  font-size: calc(10px + 2vmin);
+
+  font-size: x-large;
   display: flex;
 
   .content-row {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 0.2em;
@@ -17,18 +15,13 @@
   }
 
   &:hover .peek {
-    visibility: visible; 
+    visibility: visible;
     position: relative;
   }
-  
+
   .peek {
     visibility: hidden;
     position: absolute;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
   }
 
   .icon {
@@ -37,24 +30,25 @@
 
   .text {
     color: var(--pallet-fg-secondary);
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: var(--monospace-font-family);
     font-weight: bold;
+
     &:hover {
       text-decoration: underline;
       cursor: pointer;
     }
-    span.j{
+
+    span.j {
       padding: 0 0.1em;
     }
-    span.com{
+
+    span.com {
       opacity: 0.8;
       font-size: medium;
     }
   }
 
   .item-row {
-    display: flex;
-    flex-direction: row;
     justify-content: left;
     align-items: center;
     gap: 0.2em;

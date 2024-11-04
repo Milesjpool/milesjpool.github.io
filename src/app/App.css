@@ -1,15 +1,8 @@
 .app {
-  text-align: left;
-  background-color: var(--pallet-bg-secondary);
+  background-color: var(--pallet-bg-primary);
   height: 100vh;
-  display: flex;
-  flex-direction: column; 
-  
-  .content {
+
+  &>.content {
     flex-grow: 1;
   }
-}
-
-.icon {
-  height: 1.2em;
 }

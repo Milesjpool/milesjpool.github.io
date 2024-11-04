@@ -5,7 +5,6 @@ import { ReactComponent as AuthorIcon } from "icons/notion/people.svg";
 import { GithubRepo } from "types/GithubRepo";
 import { COLOUR_FG_SECONDARY } from "styles";
 import { useEffect, useMemo, useState } from "react";
-import { GooglePlayTag } from "app/Components/GooglePlayTag";
 
 const author = {
   name: "Miles Pool",
@@ -27,21 +26,21 @@ export function NotionPost({ title, emoji, headerImage, href, githubRepo }: Noti
   ].filter(Boolean)
 
   return (
-    <div className="notion-post">
+    <div className="notion-post flex-col">
       <img
         className="header-image"
         src={headerImage}
         alt="decorative header" />
-      <div className="body">
+      <div className="body flex-col">
         <div className="emoji">{emoji}</div>
         <a href={href} target="_blank" rel="noopener noreferrer">
           <h1>{title}</h1>
         </a>
-        <div className="attribute-row">
-          <div className="attribute">
+        <div className="attribute-row flex-row">
+          <div className="attribute flex-row">
             <AuthorIcon />
             Author</div>
-          <div className="value">
+          <div className="value flex-row">
             <img src={author.image} className="author-image" alt="author" />
             {author.name}
           </div>
@@ -67,7 +66,7 @@ function LinksBlock({ links }: { links: React.ReactNode[] }) {
     return links.slice(0, maxLinks)
   }, [links, viewWidth]);
 
-  return <div className="links">
+  return <div className="links flex-row">
     {displayedLinks}
   </div>;
 }

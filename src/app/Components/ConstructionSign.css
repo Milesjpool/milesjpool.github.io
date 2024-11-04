@@ -1,7 +1,6 @@
 .construction-sign {
   display: flex;
   position: relative;
-  font-size: calc(10px + 2vmin);
   overflow: hidden;
   width: 100%;
   height: 2em;
@@ -9,17 +8,15 @@
   border-bottom: solid var(--pallet-fg-secondary) 2px;
 
   .bg {
-    background-image: repeating-linear-gradient(
-      45deg,
-      var(--pallet-fg-secondary),
-      var(--pallet-fg-secondary) 40px,
-      var(--pallet-bg-primary) 40px,
-      var(--pallet-bg-primary) 80px
-    );
+    background-image: repeating-linear-gradient(45deg,
+        var(--pallet-fg-secondary),
+        var(--pallet-fg-secondary) 40px,
+        var(--pallet-bg-secondary) 40px,
+        var(--pallet-bg-secondary) 80px);
 
     width: 50%;
     height: 100%;
-    
+
     &.left {
       float: right;
     }
@@ -29,7 +26,7 @@
       transform: scaleX(-1);
     }
   }
-  
+
   .text-container {
     position: absolute;
     left: 50%;
@@ -40,9 +37,9 @@
     background-color: rgba(255, 255, 255, 0.9);
     text-align: center;
     white-space: nowrap;
-    color: var(--pallet-fg-tertiary);
+    color: #cb1f1c;
     font-weight: bold;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;  
-    font-size: 1em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
   }
 }

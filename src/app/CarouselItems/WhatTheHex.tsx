@@ -5,7 +5,7 @@ import { GooglePlayTag } from "../Components/GooglePlayTag";
 export function WhatTheHex() {
   return (<div className="what-the-hex">
     <WthHash className="hash-icon" />
-    <div className="description">
+    <div className="description flex-col">
       <img className="logo" src="/what-the-hex/logo.png" alt="What the Hex? logo" />
 
       <div className="description-text">

@@ -1,6 +1,4 @@
 .github-link {
-  display: flex;
-  flex-direction: column;
   position: relative;
   background-color: rgb(13, 17, 23);
   border-radius: 8px;
@@ -9,6 +7,7 @@
   overflow: hidden;
   flex-shrink: 1;
   max-height: 2.8em;
+  font-size: large;
 
   .heading {
     max-width: 100%;
@@ -34,11 +33,6 @@
     a {
       overflow: hidden;
       color: white;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 
@@ -51,11 +45,13 @@
     overflow: hidden;
     flex-shrink: 1;
     flex-grow: 0;
+    font-size: small;
+    color: rgb(145, 152, 161);
+    font-weight: light;
 
     a {
       max-width: 80%;
       overflow: hidden;
-      text-decoration: none;
       flex-shrink: 1;
       flex-grow: 0;
 
@@ -64,17 +60,11 @@
       }
 
       span {
-        font-size: 14px;
         display: block;
         max-width: 100%;
         overflow: hidden;
-        color: rgb(145, 152, 161);
         white-space: nowrap;
         text-overflow: ellipsis;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
   }

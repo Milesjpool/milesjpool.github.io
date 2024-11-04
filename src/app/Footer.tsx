@@ -7,7 +7,7 @@ import "./Footer.css";
 export function Footer() {
   return (
     <header className="footer">
-      <div className="content-row">
+      <div className="content-row flex-row">
         <Title />
         <ExternalLinks />
       </div>
@@ -15,32 +15,32 @@ export function Footer() {
   );
 }
 
-function Title() { 
+function Title() {
   return (
-   < div className="item-row">
-    <img src="/alien_256.png" alt="alien" className="icon" />
-    <a href="/">
-      <span className="text">
-        Miles
-        <span className="peek">
-          <span className="j">J</span>
-          Pool
-          <span className="com">.com</span>
+    < div className="item-row flex-row">
+      <img src="/alien_256.png" alt="alien" className="icon" />
+      <a href="/">
+        <span className="text">
+          Miles
+          <span className="peek">
+            <span className="j">J</span>
+            Pool
+            <span className="com">.com</span>
+          </span>
         </span>
-      </span>
-    </a>
-  </div>
+      </a>
+    </div>
   )
 }
 
-function ExternalLinks(){
+function ExternalLinks() {
   return (
-    <div className="item-row">
+    <div className="item-row flex-row">
       <a href="https://github.milesjpool.com" target="_blank" rel="noopener noreferrer">
-        <GithubGem className="icon" fill={COLOUR_FG_SECONDARY}/>
+        <GithubGem className="icon" fill={COLOUR_FG_SECONDARY} />
       </a>
       <a href="https://linkedin.milesjpool.com" target="_blank" rel="noopener noreferrer">
-        <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY}/>
+        <LinkedInGem className="icon" fill={COLOUR_FG_SECONDARY} />
       </a>
     </div>
   )

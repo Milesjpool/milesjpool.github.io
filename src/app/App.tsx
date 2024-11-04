@@ -1,12 +1,12 @@
 import "./App.css"
-import { Footer } from "./Banners/Footer";
+import { Footer } from "./Footer";
 import { Content } from "./Content";
 
 export function App() {
   return (
-    <div className="app">
-        <Content />
-        <Footer />
+    <div className="app flex-col">
+      <Content />
+      <Footer />
     </div>
   );
 }
