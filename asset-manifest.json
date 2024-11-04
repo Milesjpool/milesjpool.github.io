@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.c2a28892.css",
-    "main.js": "/static/js/main.18c4188c.js",
+    "main.css": "/static/css/main.d7d7ce03.css",
+    "main.js": "/static/js/main.3a35f486.js",
     "static/js/453.c9f78619.chunk.js": "/static/js/453.c9f78619.chunk.js",
     "static/media/github_pages_gem.svg": "/static/media/github_pages_gem.f763c408c2eb03d7b175b546fa719c09.svg",
     "static/media/react_gem.svg": "/static/media/react_gem.bd3166260f706de6b87f4e6e830f247b.svg",
     "static/media/wth-hash.svg": "/static/media/wth-hash.f02b44447d6b5427bf23602d25379603.svg",
     "static/media/ts_gem.svg": "/static/media/ts_gem.158aac39bf0b2a51c1f3e094697f9905.svg",
+    "static/media/notion_gem.svg": "/static/media/notion_gem.0a9717af2e5fa992f144a225557ddd7b.svg",
     "static/media/linkedin_gem.svg": "/static/media/linkedin_gem.e13688ee33468455999437701872a988.svg",
     "static/media/people.svg": "/static/media/people.5a1b857249c4f182fa911b6cd8b82ab9.svg",
     "static/media/github_gem.svg": "/static/media/github_gem.61efae3371211cf99a50bc8ee8b821f6.svg",
     "index.html": "/index.html",
-    "main.c2a28892.css.map": "/static/css/main.c2a28892.css.map",
-    "main.18c4188c.js.map": "/static/js/main.18c4188c.js.map",
+    "main.d7d7ce03.css.map": "/static/css/main.d7d7ce03.css.map",
+    "main.3a35f486.js.map": "/static/js/main.3a35f486.js.map",
     "453.c9f78619.chunk.js.map": "/static/js/453.c9f78619.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c2a28892.css",
-    "static/js/main.18c4188c.js"
+    "static/css/main.d7d7ce03.css",
+    "static/js/main.3a35f486.js"
   ]
 }
