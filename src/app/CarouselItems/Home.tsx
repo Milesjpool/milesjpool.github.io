@@ -19,7 +19,6 @@ const thisRepo = {
 export function Home() {
   return (
     <div className="home flex-col">
-      <div className="background" />
       <div className="content flex-col grow">
         <div className="title">
           <span className="prompt">&gt;</span>
@@ -52,9 +51,9 @@ export function Home() {
 
         <div className="signature flex-col">
           <span>
-            &gt; Enjoy your stay █
+            &gt; enjoy your stay █
           </span>
-          <div>
+          <div className="aliens flex">
             <img src="/alien_256.png" alt="alien" className="icon" />
             <img src="/alien_256.png" alt="alien" className="icon" />
             <img src="/alien_256.png" alt="alien" className="icon" />
