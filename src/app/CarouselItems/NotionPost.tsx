@@ -26,7 +26,7 @@ export function NotionPost({ title, emoji, headerImage, href, githubRepo }: Noti
   ].filter(Boolean)
 
   return (
-    <div className="notion-post flex-col">
+    <div className="notion-post bg-white flex-col">
       <img
         className="header-image"
         src={headerImage}

@@ -34,7 +34,7 @@
     transform-origin: 0 0;
     transform: rotate(-3deg) translateX(-50%) translateY(-50%);
     min-width: 120%;
-    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0.9;
     text-align: center;
     white-space: nowrap;
     color: #cb1f1c;

@@ -3,12 +3,12 @@ import "./WhatTheHex.css";
 import { GooglePlayTag } from "../Components/GooglePlayTag";
 
 export function WhatTheHex() {
-  return (<div className="what-the-hex">
+  return (<div className="what-the-hex bg-white">
     <WthHash className="hash-icon" />
     <div className="description flex-col">
       <img className="logo" src="/what-the-hex/logo.png" alt="What the Hex? logo" />
 
-      <div className="description-text">
+      <div className="description-text bg-white">
         <i>The colour guessing-game</i><br />
         <span className="emoji"> 🎨</span><br />
         Built as an excercise to learn <i>Kotlin</i>, and the <i>Google Play</i> development lifecycle.<br />

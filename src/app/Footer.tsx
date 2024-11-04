@@ -6,7 +6,7 @@ import "./Footer.css";
 
 export function Footer() {
   return (
-    <header className="footer">
+    <header className="footer bg-secondary">
       <div className="content-row flex-row">
         <Title />
         <ExternalLinks />

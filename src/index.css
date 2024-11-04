@@ -1,5 +1,5 @@
 :root {
-  --pallet-fg-primary: #583281;
+  --pallet-fg-primary: #53109c;
   --pallet-fg-secondary: #363732;
   --pallet-bg-primary: #abecfd;
   --pallet-bg-secondary: #ffe356;
@@ -26,6 +26,10 @@ a {
   }
 }
 
+button {
+  border: none;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -38,4 +42,16 @@ a {
 
 .icon {
   height: 1.2em;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-primary {
+  background-color: var(--pallet-bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--pallet-bg-secondary);
 }
