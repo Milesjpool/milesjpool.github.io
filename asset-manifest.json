@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.e133b8f5.css",
-    "main.js": "/static/js/main.61ad1e4a.js",
+    "main.css": "/static/css/main.05a69c29.css",
+    "main.js": "/static/js/main.ca63ac33.js",
     "static/js/453.c9f78619.chunk.js": "/static/js/453.c9f78619.chunk.js",
+    "static/media/title.png": "/static/media/title.7b83b3721600d88f6372.png",
     "static/media/github_pages_gem.svg": "/static/media/github_pages_gem.f763c408c2eb03d7b175b546fa719c09.svg",
     "static/media/react_gem.svg": "/static/media/react_gem.bd3166260f706de6b87f4e6e830f247b.svg",
+    "static/media/kotlin_gem_color.svg": "/static/media/kotlin_gem_color.fee1f301ebc9dc2921b41f5900994c4f.svg",
     "static/media/wth-hash.svg": "/static/media/wth-hash.f02b44447d6b5427bf23602d25379603.svg",
     "static/media/ts_gem.svg": "/static/media/ts_gem.158aac39bf0b2a51c1f3e094697f9905.svg",
     "static/media/notion_gem.svg": "/static/media/notion_gem.0a9717af2e5fa992f144a225557ddd7b.svg",
     "static/media/linkedin_gem.svg": "/static/media/linkedin_gem.e13688ee33468455999437701872a988.svg",
     "static/media/people.svg": "/static/media/people.5a1b857249c4f182fa911b6cd8b82ab9.svg",
     "static/media/github_gem.svg": "/static/media/github_gem.61efae3371211cf99a50bc8ee8b821f6.svg",
+    "static/media/gcp_gem.svg": "/static/media/gcp_gem.ae54a0b8f0deb32a3cd7e5a276399779.svg",
     "index.html": "/index.html",
-    "main.e133b8f5.css.map": "/static/css/main.e133b8f5.css.map",
-    "main.61ad1e4a.js.map": "/static/js/main.61ad1e4a.js.map",
+    "main.05a69c29.css.map": "/static/css/main.05a69c29.css.map",
+    "main.ca63ac33.js.map": "/static/js/main.ca63ac33.js.map",
     "453.c9f78619.chunk.js.map": "/static/js/453.c9f78619.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e133b8f5.css",
-    "static/js/main.61ad1e4a.js"
+    "static/css/main.05a69c29.css",
+    "static/js/main.ca63ac33.js"
   ]
 }
