@@ -4,7 +4,7 @@
 
     display: flex;
 
-    padding: 1em;
+    padding: 2em;
     box-sizing: border-box;
 
     .hash-icon {
@@ -41,12 +41,13 @@
         .logo {
             position: relative;
             max-width: 100%;
-            max-height: 70%;
+            max-height: 40%;
             padding-bottom: 1em;
             left: 0.5em;
 
             @media (max-width: 600px) {
                 max-width: 20em;
+                max-height: 30%;
                 align-self: flex-start;
                 padding-bottom: 3em;
             }
@@ -56,7 +57,7 @@
             border-radius: 1em 0.2em;
             rotate: -2deg;
 
-            box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.1);
+            box-shadow: 0.05em 0.1em 0.2em rgba(0, 0, 0, 0.5);
 
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
@@ -64,25 +65,42 @@
             font-size: medium;
             text-overflow: ellipsis;
             text-align: center;
-            padding: 1em;
-            color: var(--pallet-fg-secondary);
-        }
+            padding: 2em 1em;
+            color: var(--pallet-fg-primary);
 
-        .emoji {
-            font-size: xx-large;
+            @media (max-width: 400px) {
+                font-size: smaller;
+            }
+
+            .emoji {
+                font-size: xx-large;
+            }
+
+            .icons {
+                padding-top: 1em;
+                display: flex;
+                gap: 1em;
+                justify-content: center;
+                align-items: center;
+
+                .icon {
+                    height: 1.2em;
+                    width: 1.2em;
+                }
+            }
         }
     }
 
     .mockup {
         position: absolute;
         bottom: 20%;
-        right: 5%;
+        right: 0;
         z-index: 1;
         max-width: 45%;
         max-height: 70%;
 
         @media (max-width: 600px) {
-            top: 5%;
+            top: 0%;
             width: 30%;
             min-width: 12em;
         }

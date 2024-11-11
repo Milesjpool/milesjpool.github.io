@@ -1,10 +1,11 @@
-import { ConstructionSign } from "app/Components/ConstructionSign";
-import "./Home.css";
+import { ConstructionSign } from "app/routes/Home/Components/ConstructionSign";
+import "./MilesJPool.css";
 import { GithubLink } from "app/Components/GithubLink";
 
 import { ReactComponent as GithubPagesGem } from "icons/github_pages_gem.svg";
 import { ReactComponent as ReactGem } from "icons/react_gem.svg";
 import { ReactComponent as TypescriptGem } from "icons/ts_gem.svg";
+import { ReactComponent as GoogleCloudGem } from "icons/gcp_gem.svg";
 import { COLOUR_FG_SECONDARY } from "styles";
 
 const thisRepo = {
@@ -16,7 +17,7 @@ const thisRepo = {
   }
 }
 
-export function Home() {
+export function MilesJPool() {
   return (
     <div className="home flex-col">
       <div className="content flex-col grow">
@@ -31,8 +32,11 @@ export function Home() {
 
         <div className="description flex-col">
           <span>
+            Welcome to the personal website of Miles Pool.
+          </span>
+          <span>
             Handmade with <i>Typescript</i> and <i>React</i>.<br />
-            Hosted through <i>GitHub Pages</i>.
+            Hosted through <i>GitHub Pages</i> and <i>Google Cloud</i>.
           </span>
 
           <div className="gems flex-row">
@@ -44,6 +48,9 @@ export function Home() {
             </a>
             <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">
               <GithubPagesGem className="icon" fill={COLOUR_FG_SECONDARY} />
+            </a>
+            <a href="https://cloud.google.com/gcp" target="_blank" rel="noopener noreferrer">
+              <GoogleCloudGem className="icon" fill={COLOUR_FG_SECONDARY} />
             </a>
           </div>
           <ConstructionSign className="banner" />

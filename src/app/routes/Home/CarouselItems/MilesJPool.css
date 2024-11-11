@@ -3,7 +3,7 @@
   height: 100%;
   width: 100%;
   background-image: linear-gradient(0deg,
-      #00141a 0%,
+      #00212b 0%,
       #004c61 100%);
   border: 2px solid rgb(198, 198, 198);
   box-sizing: border-box;
@@ -19,7 +19,7 @@
     justify-content: space-between;
     width: 100%;
     box-sizing: content-box;
-    color: var(--pallet-fg-secondary);
+    color: var(--pallet-fg-primary);
 
 
     .title {
@@ -31,7 +31,7 @@
       vertical-align: baseline;
       font-weight: bold;
 
-      color: rgb(252, 255, 213);
+      color: var(--pallet-fg-secondary);
 
       span.prompt {
         position: relative;
@@ -63,6 +63,7 @@
 
       flex-grow: 0;
       align-items: center;
+
 
       .gems {
         gap: 1em;

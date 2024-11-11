@@ -1,0 +1,69 @@
+.oh-you {
+  height: 100%;
+  width: 100%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    width: calc(100% - 1em);
+    height: calc(100% - 1em);
+
+    border: solid black 10px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+
+    box-sizing: border-box;
+  }
+
+  .hero-image {
+    position: relative;
+    top: 30%;
+    left: 20%;
+    height: 10em;
+    max-height: 70%;
+    max-width: 60%;
+    align-self: center;
+    object-fit: cover;
+    overflow: hidden
+  }
+
+  .card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15em;
+    max-height: 30%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+
+    .title {
+      position: absolute;
+      margin: 1.5em;
+      bottom: 0;
+      right: 0;
+      max-height: 80%;
+      aspect-ratio: 16 / 9;
+      z-index: 1;
+
+
+      background-image: linear-gradient(#e0a5ff, #c252ff);
+      background-repeat: no-repeat;
+      mask: url('/public/oh-you/title.png') no-repeat;
+      mask-size: 100% 100%;
+
+      &:hover {
+        cursor: pointer;
+        background-image: unset;
+      }
+
+      .title-image {
+        height: 100%;
+        width: 100%;
+
+        mix-blend-mode: multiply;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+    }
+  }
+}

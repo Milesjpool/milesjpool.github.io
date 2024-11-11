@@ -2,13 +2,13 @@
   position: relative;
   width: 100%;
   height: 2em;
-  border-top: solid var(--pallet-fg-secondary) 2px;
-  border-bottom: solid var(--pallet-fg-secondary) 2px;
+  border-top: solid var(--pallet-fg-primary) 2px;
+  border-bottom: solid var(--pallet-fg-primary) 2px;
 
   .bg {
     background-image: repeating-linear-gradient(45deg,
-        var(--pallet-fg-secondary),
-        var(--pallet-fg-secondary) 40px,
+        var(--pallet-fg-primary),
+        var(--pallet-fg-primary) 40px,
         var(--pallet-bg-secondary) 40px,
         var(--pallet-bg-secondary) 80px);
 
@@ -35,7 +35,7 @@
     opacity: 0.9;
     text-align: center;
     white-space: nowrap;
-    color: #cb1f1c;
+    color: var(--pallet-accent-purple);
     font-weight: bold;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: larger;

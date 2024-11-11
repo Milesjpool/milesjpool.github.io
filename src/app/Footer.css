@@ -1,6 +1,6 @@
 .footer {
-  border-top: solid var(--pallet-fg-secondary) 4px;
-  border-bottom: solid var(--pallet-fg-secondary) 4px;
+  border-top: solid var(--pallet-fg-primary) 4px;
+  border-bottom: solid var(--pallet-fg-primary) 4px;
 
   font-size: x-large;
 
@@ -27,7 +27,7 @@
   }
 
   .text {
-    color: var(--pallet-fg-secondary);
+    color: var(--pallet-fg-primary);
     font-family: var(--monospace-font-family);
     font-weight: bold;
 

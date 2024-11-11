@@ -1,0 +1,43 @@
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    align-items: center;
+
+    .comic-index {
+      margin-bottom: 2em;
+      font-family: 'Comic Sans MS', sans-serif;
+    }
+
+    .comic {
+      display: block;
+
+      margin: 2em auto;
+      margin-bottom: 1em;
+      width: 40em;
+      max-width: 100%;
+
+      box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.left {
+      left: 1em;
+    }
+
+    &.right {
+      right: 1em;
+    }
+  }
+}

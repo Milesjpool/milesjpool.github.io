@@ -1,8 +1,9 @@
 :root {
-  --pallet-fg-primary: #53109c;
-  --pallet-fg-secondary: #363732;
+  --pallet-fg-primary: #363732;
+  --pallet-fg-secondary: #fcffd5;
   --pallet-bg-primary: #abecfd;
   --pallet-bg-secondary: #ffe356;
+  --pallet-accent-purple: #53109c;
 
   --monospace-font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

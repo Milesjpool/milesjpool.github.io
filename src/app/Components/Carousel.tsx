@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Carousel.css";
 import clsx from "clsx";
+import { Direction, NavArrow } from "./NavArrow";
+import { mod } from "ts/mod";
 
 type CarouselProps = {
   items: React.ReactNode[]
@@ -9,16 +11,14 @@ type CarouselProps = {
 export function Carousel({ items }: CarouselProps) {
   const [index, setIndex] = useState(0);
 
+  //todo: add touch support
+  //todo: sync index with URL
+
   return (
     <div className='carousel flex'>
-      <button
-        className='carousel-button left'
-        onClick={() => setIndex(index - 1)}
-      >◀</button>
+      <NavArrow onClick={() => setIndex(index - 1)} direction={Direction.Left} />
       <CarouselContent index={index} items={items} />
-      <button
-        className='carousel-button right'
-        onClick={() => setIndex(index + 1)}>▶</button>
+      <NavArrow onClick={() => setIndex(index + 1)} direction={Direction.Right} />
     </div>
   );
 }
@@ -54,10 +54,4 @@ function CarouselItem({ state, children }: CarouselItemProps) {
       {children}
     </div>
   );
-}
-
-
-// Helper function to get the real, mathematical modulus of a number
-function mod(n: number, m: number) {
-  return ((n % m) + m) % m;
 }
