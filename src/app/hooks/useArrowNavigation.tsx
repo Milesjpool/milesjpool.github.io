@@ -15,5 +15,5 @@ export function useArrowNavigation(onInput: (direction: Direction) => void) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onInput]);
+  }, [onInput, handleKeyDown]);
 }

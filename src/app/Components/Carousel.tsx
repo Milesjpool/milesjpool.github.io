@@ -18,7 +18,7 @@ export function Carousel({ items }: CarouselProps) {
   const [index, setIndex] = useState(() => parseInt(params.get(CAROUSEL_INDEX_PARAM) || "0"));
   useEffect(() => {
     setParams({ [CAROUSEL_INDEX_PARAM]: mod(index, items.length).toString() });
-  }, [index]);
+  }, [index, items.length, setParams]);
 
 
   //todo: add touch support

@@ -18,7 +18,7 @@ export function WhatTheHex() {
             <KotlinGem className="icon" />
           </a>
           <a href="https://play.google.com/console" target="_blank" rel="noopener noreferrer">
-            <img src="/what-the-hex/play_gem_color.png" className="icon" />
+            <img src="/what-the-hex/play_gem_color.png" className="icon" alt="Google Play Console Icon" />
           </a>
         </div>
       </div>
