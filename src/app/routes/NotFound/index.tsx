@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import "./NotFound.css";
 import clsx from "clsx";
 
-const targetValue = 404;
+const NOT_FOUND = 404;
 
 export function NotFound() {
   const [value, setValue] = useAnimatedValue(100);
   useEffect(
     () => {
-      setValue(targetValue);
+      setValue(NOT_FOUND);
     },
-    [targetValue, setValue]
+    [setValue]
   );
 
   return <div className="not-found page grow flex-col">
     <h1 className="code">{value}</h1>
 
     <div className={clsx("flex", "detail",
-      { hide: value !== targetValue }
+      { hide: value !== NOT_FOUND }
     )}>
       🤷 (Not found)
     </div>
