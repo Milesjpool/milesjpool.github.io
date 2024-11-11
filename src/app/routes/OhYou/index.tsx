@@ -1,10 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Direction, NavArrow } from "app/Components/NavArrow";
 import { NotFound } from "app/routes/NotFound";
-
+import { useArrowNavigation } from "app/hooks/useArrowNavigation";
 import "./OhYou.css";
 
-const comics = [
+type OneIndexedArray<T> = [undefined, ...T[]];
+
+const ohYouComicList: OneIndexedArray<string> = [
   undefined, // 1-indexed comic ids. This comic doesn't exist.
   "https://storage.googleapis.com/oh-you/1.jpg",
   "https://storage.googleapis.com/oh-you/2.jpg",
@@ -23,31 +25,35 @@ export function OhYou() {
   if (!comicId || isNaN(+comicId)) return <NotFound />;
 
   const comicIndex = +comicId;
-  if (!comics[comicIndex]) return <NotFound />;
+  if (!ohYouComicList[comicIndex]) return <NotFound />;
 
+  return <ComicViewer comics={ohYouComicList} index={comicIndex} setIndex={(index: number) => navigate(`../${index}`)} />;
+}
 
-  // function handleKeyDown(event: KeyboardEvent) {
-  //   if (event.key === "ArrowLeft" && comicIndex > 1) {
-  //     navigate(`../${comicIndex - 1}`);
-  //   } else if (event.key === "ArrowRight" && comicIndex < comics.length - 1) {
-  //     navigate(`../${comicIndex + 1}`);
-  //   }
-  // }
+type ComicViewerProps = {
+  comics: OneIndexedArray<string>;
+  index: number;
+  setIndex: (index: number) => void;
+};
 
-  // useEffect(() => {
-  //   window.addEventListener("keydown", handleKeyDown);
-  //   return () => {
-  //     window.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, [comicIndex, navigate]);
+function ComicViewer({ comics, index, setIndex }: ComicViewerProps) {
 
-  return (<div className="page grow">
-    {comicIndex !== 1 && <NavArrow onClick={() => navigate(`../${comicIndex - 1}`)} direction={Direction.Left} />}
+  useArrowNavigation((direction: Direction) => {
+    if (direction === Direction.Left && index > 1) {
+      setIndex(index - 1);
+    }
+    if (direction === Direction.Right && index < comics.length - 1) {
+      setIndex(index + 1);
+    }
+  });
+
+  return <div className="page grow">
+    {index !== 1 && <NavArrow onClick={() => setIndex(index - 1)} direction={Direction.Left} />}
     <div className="scroll-container flex-col">
-      <img className="comic" src={comics[comicIndex]} />
-      <span className="comic-index">{comicIndex}</span>
+      <img className="comic" src={comics[index]} />
+      <span className="comic-index">{index}</span>
     </div>
-    {comicIndex !== comics.length - 1 &&
-      <NavArrow onClick={() => navigate(`../${comicIndex + 1}`)} direction={Direction.Right} />}
-  </div>);
+    {index !== comics.length - 1 &&
+      <NavArrow onClick={() => setIndex(index + 1)} direction={Direction.Right} />}
+  </div>;
 }

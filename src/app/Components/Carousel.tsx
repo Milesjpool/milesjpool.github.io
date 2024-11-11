@@ -1,18 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Carousel.css";
 import clsx from "clsx";
 import { Direction, NavArrow } from "./NavArrow";
 import { mod } from "ts/mod";
+import { useArrowNavigation } from "app/hooks/useArrowNavigation";
+import { useSearchParams } from "react-router-dom";
 
 type CarouselProps = {
   items: React.ReactNode[]
 };
 
+const CAROUSEL_INDEX_PARAM = "cIdx";
+
 export function Carousel({ items }: CarouselProps) {
-  const [index, setIndex] = useState(0);
+  const [params, setParams] = useSearchParams({ [CAROUSEL_INDEX_PARAM]: "0" });
+
+  const [index, setIndex] = useState(() => parseInt(params.get(CAROUSEL_INDEX_PARAM) || "0"));
+  useEffect(() => {
+    setParams({ [CAROUSEL_INDEX_PARAM]: mod(index, items.length).toString() });
+  }, [index]);
+
 
   //todo: add touch support
-  //todo: sync index with URL
+
+  useArrowNavigation((direction: Direction) => {
+    if (direction === Direction.Left) {
+      setIndex(index - 1);
+    }
+    if (direction === Direction.Right) {
+      setIndex(index + 1);
+    }
+  });
 
   return (
     <div className='carousel flex'>
@@ -24,7 +42,6 @@ export function Carousel({ items }: CarouselProps) {
 }
 
 function CarouselContent({ index, items }: { index: number, items: React.ReactNode[] }) {
-
   const itemIndex = (index: number) => mod(index, items.length);
 
   return (
