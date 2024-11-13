@@ -22,6 +22,11 @@ export const CarouselItemSet = [
   />,
   <OhYou />,
   <HireAnApprentice />,
+
+  // TODO: potential additions
+  // - Middle-class rhyming slang
+  // - CV
+  // -
 ]
 
 
