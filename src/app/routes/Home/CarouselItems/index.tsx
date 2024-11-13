@@ -6,7 +6,6 @@ import { HireAnApprentice } from "./HireAnApprentice";
 
 export const CarouselItemSet = [
   <MilesJPool />,
-  <WhatTheHex />,
   <NotionPost
     emoji="🎛️"
     title="Elevating my desk"
@@ -14,6 +13,7 @@ export const CarouselItemSet = [
     href="https://milesjpool.notion.site/Elevating-my-desk-127ea37a280e808ab350ec64626f20ca"
     githubRepo={{ url: "https://github.com/Milesjpool/standing-desk" }}
   />,
+  <WhatTheHex />,
   <NotionPost
     emoji="🧊"
     title="Colour distance calculation [pt. I]"
