@@ -2,6 +2,7 @@ import { MilesJPool } from "./MilesJPool";
 import { NotionPost } from "./NotionPost";
 import { WhatTheHex } from "./WhatTheHex";
 import { OhYou } from "./OhYou";
+import { HireAnApprentice } from "./HireAnApprentice";
 
 export const CarouselItemSet = [
   <MilesJPool />,
@@ -19,7 +20,8 @@ export const CarouselItemSet = [
     headerImage="https://images.unsplash.com/photo-1502691876148-a84978e59af8"
     href="https://milesjpool.notion.site/Colour-distance-calculation-pt-I-4f116bfa10e2415d93c5e50ba10e3591"
   />,
-  <OhYou />
+  <OhYou />,
+  <HireAnApprentice />,
 ]
 
 
