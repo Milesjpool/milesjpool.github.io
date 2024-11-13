@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { Footer } from "./Footer";
-
-import "./App.css"
 import { Home } from "./routes/Home";
 import { OhYou } from "./routes/OhYou";
 import { NotFound } from "./routes/NotFound";
+
+import "./App.css"
 
 export function App() {
   return (
@@ -15,7 +15,8 @@ export function App() {
           <Route path="/oh-you">
             <Route path=":comicId" element={<OhYou />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
         <Footer />
       </div>
