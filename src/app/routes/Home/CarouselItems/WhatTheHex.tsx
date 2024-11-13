@@ -12,7 +12,7 @@ export function WhatTheHex() {
       <div className="description-text bg-white">
         <i>The colour guessing-game</i><br />
         <span className="emoji"> 🎨</span><br />
-        Built as an excercise to learn <i>Kotlin</i>, and the <i>Google Play</i> development lifecycle.<br />
+        Built as an exercise to learn <i>Kotlin</i>, and the <i>Google Play</i> development lifecycle.<br />
         <div className="flex-row icons">
           <a href="https://kotlinlang.org/" target="_blank" rel="noopener noreferrer">
             <KotlinGem className="icon" />
