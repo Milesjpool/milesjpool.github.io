@@ -12,7 +12,8 @@ export function App() {
       <div className="app flex-col bg-primary">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/oh-you">
+          <Route path="/oh-you" >
+            <Route index element={<Navigate to="./1" />} />
             <Route path=":comicId" element={<OhYou />} />
           </Route>
           <Route path="/404" element={<NotFound />} />
