@@ -13,7 +13,7 @@ export function NotFound() {
     [setValue]
   );
 
-  return <div className="not-found page grow flex-col">
+  return <div className="not-found grow flex-col">
     <h1 className="code">{value}</h1>
 
     <div className={clsx("flex", "detail",
