@@ -5,7 +5,7 @@ export function OhYou() {
   const [hover, setHover] = useState(false);
 
 
-  const heroImage = hover ? "/oh-you/hero-hover.png" : "/oh-you/hero.png";
+  const heroImage = hover ? "/assets/oh-you/hero-hover.png" : "/assets/oh-you/hero.png";
 
   return (
     <div className="oh-you" onClick={() => setHover(true)} >
@@ -20,7 +20,7 @@ export function OhYou() {
 function Logo({ onHover }: { onHover: (hover: boolean) => void }) {
   return <a href="/oh-you/1">
     <div className="title">
-      <img className="title-image" src="/oh-you/title.png" alt="Oh-you comic title"
+      <img className="title-image" src="/assets/oh-you/title.png" alt="Oh-you comic title"
         onMouseEnter={() => onHover(true)}
         onMouseLeave={() => onHover(false)} />
     </div>

@@ -18,7 +18,7 @@ export function Footer() {
 function Title() {
   return (
     < div className="item-row flex-row">
-      <img src="/alien_256.png" alt="alien" className="icon" />
+      <img src="/assets/alien_256.png" alt="alien" className="icon" />
       <a href="/">
         <span className="text">
           Miles

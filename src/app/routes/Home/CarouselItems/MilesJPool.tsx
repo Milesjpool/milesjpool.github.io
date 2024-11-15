@@ -61,9 +61,9 @@ export function MilesJPool() {
             &gt; enjoy your stay █
           </span>
           <div className="aliens flex">
-            <img src="/alien_256.png" alt="alien" className="icon" />
-            <img src="/alien_256.png" alt="alien" className="icon" />
-            <img src="/alien_256.png" alt="alien" className="icon" />
+            <img src="/assets/alien_256.png" alt="alien" className="icon" />
+            <img src="/assets/alien_256.png" alt="alien" className="icon" />
+            <img src="/assets/alien_256.png" alt="alien" className="icon" />
           </div>
         </div>
 
