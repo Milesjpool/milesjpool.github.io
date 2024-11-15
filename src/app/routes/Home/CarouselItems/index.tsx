@@ -3,6 +3,7 @@ import { NotionPost } from "./NotionPost";
 import { WhatTheHex } from "./WhatTheHex";
 import { OhYou } from "./OhYou";
 import { HireAnApprentice } from "./HireAnApprentice";
+// import { CurriculumVitae } from "./CurriculumVitae";
 
 export const CarouselItemSet = [
   <MilesJPool />,
@@ -20,12 +21,12 @@ export const CarouselItemSet = [
     headerImage="https://images.unsplash.com/photo-1502691876148-a84978e59af8"
     href="https://milesjpool.notion.site/Colour-distance-calculation-pt-I-4f116bfa10e2415d93c5e50ba10e3591"
   />,
+  // <CurriculumVitae />,
   <OhYou />,
   <HireAnApprentice />,
 
   // TODO: potential additions
   // - Middle-class rhyming slang
-  // - CV
   // - Stereotypical SAAS-startup style landing page 
 ]
 
