@@ -26,7 +26,7 @@ export const CarouselItemSet = [
   // TODO: potential additions
   // - Middle-class rhyming slang
   // - CV
-  // -
+  // - Stereotypical SAAS-startup style landing page 
 ]
 
 

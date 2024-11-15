@@ -28,6 +28,7 @@ export function OhYou() {
   const comicIndex = +comicId;
   if (!ohYouComicList[comicIndex]) return <NotFound />;
 
+  // TODO: add a header with a link to the index page
   return <ComicViewer comics={ohYouComicList} index={comicIndex} setIndex={(index: number) => navigate(`../${index}`)} />;
 }
 
@@ -47,6 +48,10 @@ function ComicViewer({ comics, index, setIndex }: ComicViewerProps) {
       setIndex(index + 1);
     }
   });
+
+  //TODO: 
+  // - fix mobile-layout navigation
+  // - add swipe navigation?
 
   return <div className="page grow">
     {index !== 1 && <NavArrow onClick={() => setIndex(index - 1)} direction={Direction.Left} />}

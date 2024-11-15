@@ -7,18 +7,16 @@ import { NotFound } from "./routes/NotFound";
 import "./App.css"
 
 export function App() {
+
+  // Todo: 
+  // - generate sitemaps dynamically
+  // - add/improve tracking
+
   return (
     <Router>
       <div className="app flex-col bg-primary">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/oh-you" >
-            <Route index element={<Navigate to="./1" />} />
-            <Route path=":comicId" element={<OhYou />} />
-          </Route>
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" />} />
-        </Routes>
+              {/* TODO: add oh-you index page */}
+              <Route index element={<Navigate to="./1" />} />
         <Footer />
       </div>
     </Router>
