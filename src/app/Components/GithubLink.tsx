@@ -20,7 +20,7 @@ export function GithubLink({ className, lightMode, url, statusBadge }: GithubLin
       <div className="subheading flex shrink overflow-hidden" >
         {statusBadge ? (
           <a className="shrink overflow-hidden" href={statusBadge.href} target="_blank" rel="noopener noreferrer">
-            <img src={url + statusBadge.path} alt="alien" />
+            <img src={url + statusBadge.path} alt="github build status" />
           </a>) : (
           <a className="shrink overflow-hidden" href={url} target="_blank" rel="noopener noreferrer">
             <span className="overflow-hidden">{url}</span>
