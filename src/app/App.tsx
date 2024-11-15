@@ -15,7 +15,7 @@ export function App() {
   return (
     <Router>
       <div className="app flex-col bg-primary">
-        <div className="flex grow">
+        <div className="flex grow overflow-hidden">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/oh-you" >
