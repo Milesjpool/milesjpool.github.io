@@ -15,7 +15,8 @@ const ohYouComicList: OneIndexedArray<string> = [
   "https://storage.googleapis.com/oh-you/5.jpg",
   "https://storage.googleapis.com/oh-you/6.jpg",
   "https://storage.googleapis.com/oh-you/7.jpg",
-  "https://storage.googleapis.com/oh-you/8.jpg"
+  "https://storage.googleapis.com/oh-you/8.jpg",
+  "https://storage.googleapis.com/oh-you/9.jpg"
 ];
 
 export function OhYou() {
