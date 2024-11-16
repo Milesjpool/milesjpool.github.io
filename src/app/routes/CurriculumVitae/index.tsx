@@ -25,7 +25,7 @@ export function CurriculumVitae() {
       contentRef.current.style.transform = `scale(${scale})`;
       containerRef.current.style.height = `${scale * 1870}px`;
     }
-  }, [scale, contentRef]);
+  }, [scale, contentRef, containerRef]);
 
   return <div className="cv-layout overflow-scroll">
     <div ref={containerRef} className="cv-container" >

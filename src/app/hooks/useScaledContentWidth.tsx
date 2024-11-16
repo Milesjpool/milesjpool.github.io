@@ -17,6 +17,7 @@ export function useScaledContentWidth(setScale: any) {
     scaleIframe();
     window.addEventListener('resize', scaleIframe);
     return () => window.removeEventListener('resize', scaleIframe);
-  }, []);
+  }, [scaleIframe]);
+
   return { containerRef, contentRef };
 }
