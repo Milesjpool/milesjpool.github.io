@@ -1,0 +1,21 @@
+.cv-layout {
+  display: flex;
+  width: 100%;
+  padding: 1em 0.5em;
+
+  .cv-container {
+    min-width: 80%;
+    max-width: 700px;
+    height: fit-content;
+    margin: 0 auto;
+    overflow: none;
+
+    .cv {
+      padding: 2em 3em;
+      width: 650px;
+      height: 1800px;
+      transform-origin: 0 0;
+      transform: scale(1);
+    }
+  }
+}
