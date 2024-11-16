@@ -53,7 +53,7 @@ export function MilesJPool() {
               <GoogleCloudGem className="icon" fill={COLOUR_FG_SECONDARY} />
             </a>
           </div>
-          <ConstructionSign className="banner" />
+          <ConstructionSign className="banner shadow-2" />
         </div>
 
         <div className="signature flex-col">

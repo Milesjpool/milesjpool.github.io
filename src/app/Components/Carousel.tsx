@@ -67,7 +67,7 @@ type CarouselItemProps = {
 
 function CarouselItem({ state, children }: CarouselItemProps) {
   return (
-    <div className={clsx('carousel-item bg-white overflow-hidden', state)}>
+    <div className={clsx('carousel-item bg-white shadow-3 overflow-hidden rounded-3', state)}>
       {children}
     </div>
   );

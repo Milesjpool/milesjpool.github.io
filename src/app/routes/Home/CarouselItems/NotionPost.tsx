@@ -41,7 +41,7 @@ export function NotionPost({ title, emoji, headerImage, href, githubRepo }: Noti
             <AuthorIcon />
             Author</div>
           <div className="value flex-row">
-            <img src={author.image} className="author-image" alt="author" />
+            <img src={author.image} className="author-image round" alt="author" />
             {author.name}
           </div>
         </div>

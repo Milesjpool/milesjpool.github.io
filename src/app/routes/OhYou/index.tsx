@@ -54,10 +54,8 @@ function ComicViewer({ comics, index, setIndex }: ComicViewerProps) {
   // - add swipe navigation?
 
   return <div className="page grow">
-    {index !== 1 && <NavArrow onClick={() => setIndex(index - 1)} direction={Direction.Left} />}
-    <div className="scroll-container flex-col">
-      <img key={index} className="comic" src={comics[index]} alt="Comic panel" />
-      <span className="comic-index">{index}</span>
+    <div className="scroll-container flex-col overflow-scroll">
+      <img key={index} className="comic shadow" src={comics[index]} alt="Comic panel" />
     </div>
     {index !== comics.length - 1 &&
       <NavArrow onClick={() => setIndex(index + 1)} direction={Direction.Right} />}

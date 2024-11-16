@@ -10,7 +10,7 @@ type GithubLinkProps = GithubRepo & {
 
 export function GithubLink({ className, lightMode, url, statusBadge }: GithubLinkProps) {
   return (
-    <div className={clsx("github-link flex-col shrink overflow-hidden", className, lightMode && 'light')}>
+    <div className={clsx("github-link flex-col shrink overflow-hidden rounded", className, lightMode && 'light')}>
       <div className="heading shrink overflow-hidden" >
         <a href={url} target="_blank" className="overflow-hidden" rel="noopener noreferrer">
           <GithubGem className="icon" />

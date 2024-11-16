@@ -59,8 +59,25 @@ button {
   overflow: hidden;
 }
 
+.overflow-scroll {
+  overflow: scroll;
+}
+
 .icon {
   height: 1.2em;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.rounded,
+.rounded-1 {
+  border-radius: 6px;
+}
+
+.rounded-3 {
+  border-radius: 18px;
 }
 
 .code {
@@ -77,4 +94,17 @@ button {
 
 .bg-secondary {
   background-color: var(--pallet-bg-secondary);
+}
+
+.shadow,
+.shadow-1 {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.shadow-2 {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.shadow-3 {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

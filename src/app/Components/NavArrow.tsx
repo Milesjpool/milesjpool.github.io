@@ -13,7 +13,7 @@ type NavArrowProps = {
 
 export function NavArrow({ onClick, direction }: NavArrowProps) {
   return <button
-    className={clsx('nav-arrow', direction === Direction.Left ? 'left' : 'right')}
+    className={clsx('nav-arrow', 'round', 'shadow', direction === Direction.Left ? 'left' : 'right')}
     onClick={onClick}
   >
     {direction === Direction.Left ? '◀' : '▶'}
