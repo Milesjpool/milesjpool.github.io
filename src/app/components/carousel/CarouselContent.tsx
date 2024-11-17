@@ -17,8 +17,12 @@ export function CarouselContent({ index, items, onSwipe }: CarouselContentProps)
 
   const onDrag = (draggable: HTMLDivElement, offset: DragOffset) => {
     const rotation = Math.max(-30, Math.min(30, offset[0] / 30));
+
+    // Stops the card being dragged straight down.
+    const yOffset = Math.min(offset[1], (1 - Math.cos(offset[0] / draggable.offsetWidth)) * (draggable.offsetHeight / 4) + 10);
+
     draggable.style.transition = "none";
-    draggable.style.transform = `translate(${offset[0]}px, ${offset[1]}px) rotate(${rotation}deg)`;
+    draggable.style.transform = `translate(${offset[0]}px, ${yOffset}px) rotate(${rotation}deg)`;
   };
 
   const onDragEnd = useCallback((draggable: HTMLDivElement, offset: DragOffset) => {
