@@ -1,8 +1,8 @@
 import { ReactNode, useCallback } from "react";
-import { Direction } from "../NavArrow";
+import { Direction } from "app/components/NavArrow";
 import { mod } from "ts/mod";
 import { DragOffset, useDragEffect } from "app/hooks/useDragEffect";
-import { CarouselItem } from "./CarouselItem";
+import { CarouselCard } from "./CarouselCard";
 
 import "./Carousel.css";
 
@@ -38,18 +38,18 @@ export function CarouselContent({ index, items, onSwipe }: CarouselContentProps)
     <div
       ref={dragAreaRef}
       className="carousel-content">
-      <CarouselItem key={index - 1} state="previous">
+      <CarouselCard key={index - 1} state="previous">
         {items[itemIndex(index - 1)]}
-      </CarouselItem>
-      <CarouselItem
+      </CarouselCard>
+      <CarouselCard
         ref={draggableRef}
         key={index}
         state="current">
         {items[itemIndex(index)]}
-      </CarouselItem>
-      <CarouselItem key={index + 1} state="next">
+      </CarouselCard>
+      <CarouselCard key={index + 1} state="next">
         {items[itemIndex(index + 1)]}
-      </CarouselItem>
+      </CarouselCard>
     </div>
   );
 }
