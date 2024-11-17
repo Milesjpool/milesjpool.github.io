@@ -4,19 +4,13 @@ export type DragOffset = [number, number];
 
 export function useDragEffect<T>(
   onDragStart: (draggable: T) => void,
-  onDrag: (draggable: T, offset: DragOffset) => void,
+  onDrag: (draggable: T, offset: DragOffset, e: Event) => void,
   onDragEnd: (draggable: T, offset: DragOffset) => void
 ) {
   const [touchStart, setTouchStart] = useState<DragOffset | null>(null);
   const [touchOffset, setTouchOffset] = useState<DragOffset | null>(null);
   const dragAreaRef = createRef<HTMLDivElement>();
   const draggableRef = useRef<T>(null);
-
-  useEffect(() => {
-    if (draggableRef.current && touchOffset) {
-      onDrag(draggableRef.current, touchOffset);
-    }
-  }, [draggableRef, touchOffset, onDrag]);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
     if (draggableRef.current) {
@@ -33,7 +27,7 @@ export function useDragEffect<T>(
       ];
       setTouchOffset(offset);
       if (draggableRef.current) {
-        onDrag(draggableRef.current, offset);
+        onDrag(draggableRef.current, offset, e);
       }
     }
 
