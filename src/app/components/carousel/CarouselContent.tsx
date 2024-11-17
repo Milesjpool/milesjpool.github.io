@@ -24,7 +24,7 @@ export function CarouselContent({ index, items, onSwipe }: CarouselContentProps)
   const onDragEnd = useCallback((draggable: HTMLDivElement, offset: DragOffset) => {
     draggable.style.transition = '';
     draggable.style.transform = '';
-    const minSwipeDistance = draggable.offsetWidth * 0.4;
+    const minSwipeDistance = draggable.offsetWidth / 4;
     if (offset[0] > minSwipeDistance) {
       onSwipe(Direction.Left);
     } else if (offset[0] < -minSwipeDistance) {
