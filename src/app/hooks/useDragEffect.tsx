@@ -23,7 +23,7 @@ export function useDragEffect<T>(
       onDragStart(draggableRef.current);
     }
     setTouchStart([e.touches[0].screenX, e.touches[0].screenY]);
-  }, [setTouchStart]);
+  }, [setTouchStart, onDragStart]);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
     if (touchStart) {
@@ -37,7 +37,7 @@ export function useDragEffect<T>(
       }
     }
 
-  }, [touchStart, setTouchOffset]);
+  }, [touchStart, setTouchOffset, onDrag]);
 
   const handleTouchEnd = useCallback((e: TouchEvent) => {
     if (draggableRef.current && touchOffset) {
