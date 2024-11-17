@@ -18,12 +18,10 @@ export function useDragEffect<T>(
   }, [draggableRef, touchOffset, onDrag]);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    e.preventDefault();
     setTouchStart([e.touches[0].screenX, e.touches[0].screenY]);
   }, [setTouchStart]);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
-    e.preventDefault();
     if (touchStart) {
       const dX = e.touches[0].screenX - touchStart[0];
       const dY = e.touches[0].screenY - touchStart[1];
