@@ -1,0 +1,84 @@
+.carousel {
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .nav-arrow {
+    position: absolute;
+    z-index: 2;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+
+    @media (max-width: 600px) {
+      bottom: 1em;
+    }
+  }
+}
+
+.carousel-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-item {
+  position: absolute;
+  height: calc(100% - 4em);
+  width: calc(100% - 10em);
+  margin: 2em 5em;
+
+  @media (max-width: 600px) {
+    margin: 3em 1em;
+    margin-bottom: 6em;
+    height: calc(100% - 9em);
+    width: calc(100% - 2em);
+  }
+
+  rotate: 2deg;
+
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
+
+  &.previous {
+    transform: translateX(-50%) scale(0.9) rotate(-5deg);
+    z-index: 0;
+    filter: blur(0.1em);
+
+    &::after {
+      opacity: 0.5;
+      pointer-events: all;
+    }
+  }
+
+  &.next {
+    transform: translateX(50%) scale(0.9) rotate(-3deg);
+    z-index: 0;
+    filter: blur(0.1em);
+
+    &::after {
+      opacity: 0.5;
+      pointer-events: all;
+    }
+  }
+
+  &::after {
+    transition: opacity 0.5s ease-in-out;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0);
+    pointer-events: none;
+  }
+}
