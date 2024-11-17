@@ -1,6 +1,6 @@
 import { ReactComponent as WthHash } from "icons/whatthehex/wth-hash.svg";
 import "./WhatTheHex.css";
-import { GooglePlayTag } from "app/Components/GooglePlayTag";
+import { GooglePlayTag } from "app/components/GooglePlayTag";
 import { ReactComponent as KotlinGem } from "icons/whatthehex/kotlin_gem_color.svg";
 
 export function WhatTheHex() {

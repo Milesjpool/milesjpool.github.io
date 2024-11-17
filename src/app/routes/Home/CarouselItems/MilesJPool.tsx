@@ -1,12 +1,13 @@
-import { ConstructionSign } from "app/routes/Home/Components/ConstructionSign";
-import "./MilesJPool.css";
-import { GithubLink } from "app/Components/GithubLink";
+import { ConstructionSign } from "app/routes/Home/components/ConstructionSign";
+import { GithubLink } from "app/components/GithubLink";
 
 import { ReactComponent as GithubPagesGem } from "icons/github_pages_gem.svg";
 import { ReactComponent as ReactGem } from "icons/react_gem.svg";
 import { ReactComponent as TypescriptGem } from "icons/ts_gem.svg";
 import { ReactComponent as GoogleCloudGem } from "icons/gcp_gem.svg";
 import { COLOUR_FG_SECONDARY } from "styles";
+
+import "./MilesJPool.css";
 
 const thisRepo = {
   name: "milesjpool.github.io",

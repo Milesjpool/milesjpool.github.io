@@ -1,4 +1,4 @@
-import { Direction } from "app/Components/NavArrow";
+import { Direction } from "app/components/NavArrow";
 import { useCallback, useEffect } from "react";
 
 export function useArrowNavigation(onInput: (direction: Direction) => void) {

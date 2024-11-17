@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Direction, NavArrow } from "app/Components/NavArrow";
+import { Direction, NavArrow } from "app/components/NavArrow";
 import { NotFound } from "app/routes/NotFound";
 import { useArrowNavigation } from "app/hooks/useArrowNavigation";
 import "./OhYou.css";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import "./CurriculumVitae.css";
-import { useScaledContentWidth } from "app/hooks/useScaledContentWidth";
+import { useScaledContentWidth } from "app/routes/Home/hooks/useScaledContentWidth";
 
 export function CurriculumVitae() {
   const [scale, setScale] = useState(1);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import './CurriculumVitae.css';
 import { ReactComponent as CVGem } from 'icons/cv_gem.svg';
-import { useScaledContentWidth } from 'app/hooks/useScaledContentWidth';
+import { useScaledContentWidth } from 'app/routes/Home/hooks/useScaledContentWidth';
 
 export function CurriculumVitae() {
   const [scale, setScale] = useState(1);

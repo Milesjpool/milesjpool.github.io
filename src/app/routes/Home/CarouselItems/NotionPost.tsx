@@ -1,10 +1,11 @@
-import { GithubLink } from "app/Components/GithubLink";
-import "./NotionPost.css";
+import { GithubLink } from "app/components/GithubLink";
 import { ReactComponent as NotionGem } from "icons/notion_gem.svg";
 import { ReactComponent as AuthorIcon } from "icons/notion/people.svg";
 import { GithubRepo } from "types/GithubRepo";
 import { COLOUR_FG_SECONDARY } from "styles";
 import { useEffect, useMemo, useState } from "react";
+
+import "./NotionPost.css";
 
 const author = {
   name: "Miles Pool",
