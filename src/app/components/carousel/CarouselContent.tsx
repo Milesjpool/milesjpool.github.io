@@ -24,8 +24,8 @@ const onDrag = (draggable: HTMLDivElement, offset: DragOffset, event: Event) => 
   const yOffset = Math.min(offset[1], maxYOffset);
   if (yOffset < maxYOffset) {
     event.preventDefault()
-    draggable.style.transform = `translate(${offset[0]}px, ${yOffset}px) rotate(${rotation}deg)`;
   }
+  draggable.style.transform = `translate(${offset[0]}px, ${yOffset}px) rotate(${rotation}deg)`;
 };
 
 export function CarouselContent({ index, items, onSwipe }: CarouselContentProps) {
