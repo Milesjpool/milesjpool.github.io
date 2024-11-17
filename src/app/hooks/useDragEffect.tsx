@@ -3,6 +3,7 @@ import { useState, createRef, useRef, useEffect, useCallback } from "react";
 export type DragOffset = [number, number];
 
 export function useDragEffect<T>(
+  onDragStart: (draggable: T) => void,
   onDrag: (draggable: T, offset: DragOffset) => void,
   onDragEnd: (draggable: T, offset: DragOffset) => void
 ) {
@@ -18,15 +19,24 @@ export function useDragEffect<T>(
   }, [draggableRef, touchOffset, onDrag]);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
+    if (draggableRef.current) {
+      onDragStart(draggableRef.current);
+    }
     setTouchStart([e.touches[0].screenX, e.touches[0].screenY]);
   }, [setTouchStart]);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
     if (touchStart) {
-      const dX = e.touches[0].screenX - touchStart[0];
-      const dY = e.touches[0].screenY - touchStart[1];
-      setTouchOffset([dX, dY]);
+      const offset: DragOffset = [
+        (e.touches[0].screenX - touchStart[0]),
+        (e.touches[0].screenY - touchStart[1])
+      ];
+      setTouchOffset(offset);
+      if (draggableRef.current) {
+        onDrag(draggableRef.current, offset);
+      }
     }
+
   }, [touchStart, setTouchOffset]);
 
   const handleTouchEnd = useCallback((e: TouchEvent) => {
