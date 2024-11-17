@@ -1,9 +1,0 @@
-.google-play-tag {
-    align-items: center;
-    z-index: 3;
-    max-width: calc(100% - 3em);
-
-    a {
-        height: 3.5em;
-    }
-}
