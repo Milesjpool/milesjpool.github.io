@@ -30,7 +30,7 @@ export function ComicViewer({ comics, index, setIndex }: ComicViewerProps) {
     if (direction === Direction.Right && navRight) {
       setIndex(index + 1);
     }
-  }, [index, comics, setIndex, navLeft, navRight]);
+  }, [index, setIndex, navLeft, navRight]);
 
 
   const onDrag = useCallback((offset: DragOffset) => {
