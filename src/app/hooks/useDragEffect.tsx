@@ -1,22 +1,30 @@
-import { useState, createRef, useRef, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export type DragOffset = [number, number];
 
-export function useDragEffect<T>(
-  onDragStart: (draggable: T) => void,
-  onDrag: (draggable: T, offset: DragOffset, e: Event) => void,
-  onDragEnd: (draggable: T, offset: DragOffset) => void
+type useDragEffectProps = {
+  dragAreaRef: React.RefObject<HTMLDivElement>;
+  onDragStart?: () => void;
+  onDrag?: (offset: DragOffset, e: Event) => void;
+  onDragEnd?: (offset: DragOffset) => void;
+};
+
+const noop = () => { };
+
+export function useDragEffect(
+  { dragAreaRef,
+    onDragStart = noop,
+    onDrag = noop,
+    onDragEnd = noop
+  }: useDragEffectProps
 ) {
   const [touchStart, setTouchStart] = useState<DragOffset | null>(null);
   const [touchOffset, setTouchOffset] = useState<DragOffset | null>(null);
-  const dragAreaRef = createRef<HTMLDivElement>();
-  const draggableRef = useRef<T>(null);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    if (draggableRef.current) {
-      onDragStart(draggableRef.current);
-    }
     setTouchStart([e.touches[0].screenX, e.touches[0].screenY]);
+    setTouchOffset([0, 0]);
+    onDragStart();
   }, [setTouchStart, onDragStart]);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
@@ -26,20 +34,16 @@ export function useDragEffect<T>(
         (e.touches[0].screenY - touchStart[1])
       ];
       setTouchOffset(offset);
-      if (draggableRef.current) {
-        onDrag(draggableRef.current, offset, e);
-      }
+      onDrag(offset, e);
     }
 
   }, [touchStart, setTouchOffset, onDrag]);
 
   const handleTouchEnd = useCallback((e: TouchEvent) => {
-    if (draggableRef.current && touchOffset) {
-      onDragEnd(draggableRef.current, touchOffset);
-    }
+    touchOffset && onDragEnd(touchOffset);
     setTouchOffset(null);
     setTouchStart(null);
-  }, [draggableRef, touchOffset, setTouchOffset, setTouchStart, onDragEnd]);
+  }, [touchOffset, setTouchOffset, setTouchStart, onDragEnd]);
 
   useEffect(() => {
     const dragArea = dragAreaRef.current;
@@ -52,6 +56,4 @@ export function useDragEffect<T>(
       dragArea?.removeEventListener('touchend', handleTouchEnd);
     };
   }, [dragAreaRef, handleTouchStart, handleTouchMove, handleTouchEnd]);
-
-  return { dragAreaRef, draggableRef };
 }
