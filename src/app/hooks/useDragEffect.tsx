@@ -22,7 +22,7 @@ export function useDragEffect(
   const [touchOffset, setTouchOffset] = useState<DragOffset | null>(null);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    setTouchStart([e.touches[0].screenX, e.touches[0].screenY]);
+    setTouchStart([e.touches[0].pageX, e.touches[0].pageY]);
     setTouchOffset([0, 0]);
     onDragStart();
   }, [setTouchStart, onDragStart]);
@@ -30,8 +30,8 @@ export function useDragEffect(
   const handleTouchMove = useCallback((e: TouchEvent) => {
     if (touchStart) {
       const offset: DragOffset = [
-        (e.touches[0].screenX - touchStart[0]),
-        (e.touches[0].screenY - touchStart[1])
+        (e.touches[0].pageX - touchStart[0]),
+        (e.touches[0].pageY - touchStart[1])
       ];
       setTouchOffset(offset);
       onDrag(offset, e);
