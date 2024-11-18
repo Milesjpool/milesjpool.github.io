@@ -44,11 +44,11 @@
     }
 
     &.left {
-      left: 1em;
+      left: 10px;
     }
 
     &.right {
-      right: 1em;
+      right: 10px;
     }
   }
 }
