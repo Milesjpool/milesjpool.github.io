@@ -1,10 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Direction, NavArrow } from "app/components/NavArrow";
 import { NotFound } from "app/routes/NotFound";
-import { useArrowNavigation } from "app/hooks/useArrowNavigation";
-import "./OhYou.css";
+import { ComicViewer } from "./ComicViewer";
+import { OneIndexedArray } from "./types";
 
-type OneIndexedArray<T> = [undefined, ...T[]];
+import "./OhYou.css";
 
 const ohYouComicList: OneIndexedArray<string> = [
   undefined, // 1-indexed comic ids. This comic doesn't exist.
@@ -32,32 +31,3 @@ export function OhYou() {
   return <ComicViewer comics={ohYouComicList} index={comicIndex} setIndex={(index: number) => navigate(`../${index}`)} />;
 }
 
-type ComicViewerProps = {
-  comics: OneIndexedArray<string>;
-  index: number;
-  setIndex: (index: number) => void;
-};
-
-function ComicViewer({ comics, index, setIndex }: ComicViewerProps) {
-
-  useArrowNavigation((direction: Direction) => {
-    if (direction === Direction.Left && index > 1) {
-      setIndex(index - 1);
-    }
-    if (direction === Direction.Right && index < comics.length - 1) {
-      setIndex(index + 1);
-    }
-  });
-
-  //TODO: 
-  // - fix mobile-layout navigation
-  // - add swipe navigation?
-
-  return <div className="page grow">
-    <div className="scroll-container flex-col overflow-scroll">
-      <img key={index} className="comic shadow" src={comics[index]} alt="Comic panel" />
-    </div>
-    {index !== comics.length - 1 &&
-      <NavArrow onClick={() => setIndex(index + 1)} direction={Direction.Right} />}
-  </div>;
-}

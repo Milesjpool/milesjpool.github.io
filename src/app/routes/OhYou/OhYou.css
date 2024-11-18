@@ -10,7 +10,7 @@
     align-items: center;
 
     .comic-index {
-      margin-bottom: 2em;
+      margin-bottom: 4em;
       font-family: 'Comic Sans MS', sans-serif;
     }
 
@@ -22,12 +22,26 @@
       width: 40em;
       max-width: 100%;
     }
+
+    .swipe-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5vh;
+    }
   }
 
   .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+
+    @media (max-width: 600px) {
+      opacity: 0.3;
+      top: unset;
+      bottom: 0;
+    }
 
     &.left {
       left: 1em;
