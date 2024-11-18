@@ -45,7 +45,7 @@ export function ComicViewer({ comics, index, setIndex }: ComicViewerProps) {
     const newDistance = Math.min(Math.abs(offset[0]) / distanceThreshold, 1);
 
     if (newDistance === 1 && previousDistance !== 1) {
-      navigator.vibrate && navigator.vibrate(50);
+      navigator.vibrate && navigator.vibrate(30);
     } else if (newDistance !== 1 && previousDistance === 1) {
       navigator.vibrate && navigator.vibrate(10);
     }
