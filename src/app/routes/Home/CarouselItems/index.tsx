@@ -23,6 +23,12 @@ export const CarouselItemSet = [
   />,
   // <CurriculumVitae />,
   <OhYou />,
+  <NotionPost
+    emoji="📆"
+    title="How we talk about project dates."
+    headerImage="https://images.unsplash.com/photo-1633265486501-0cf524a07213"
+    href="https://milesjpool.notion.site/How-we-talk-about-project-dates-246ea37a280e80b1a925e96d8c852525"
+  />,
   <HireAnApprentice />,
 
   // TODO: potential additions
