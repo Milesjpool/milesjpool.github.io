@@ -94,6 +94,15 @@
         justify-content: center;
       }
     }
+
+    .cursor {
+      animation: none;
+      opacity: 0;
+
+      &.blink {
+        animation: blink 0.7s steps(1) infinite;
+      }
+    }
   }
 
   .github-link {
@@ -103,5 +112,11 @@
     min-width: unset;
     max-width: calc(100% - 3em);
     flex-shrink: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
   }
 }

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import clsx from "clsx";
 import { ConstructionSign } from "app/routes/Home/components/ConstructionSign";
 import { GithubLink } from "app/components/GithubLink";
 
@@ -19,16 +21,18 @@ const thisRepo = {
 }
 
 export function MilesJPool() {
+  const [cursorPosition, setCursorPosition] = useState<'title' | 'signature'>('title');
+
   return (
     <div className="home flex-col">
       <div className="content flex-col grow">
-        <div className="title">
+        <div className="title" onClick={() => setCursorPosition('title')}>
           <span className="prompt">&gt;</span>
           Miles&#8203;
           <span className="j">J&#8203;</span>
           Pool&#8203;
           <span className="com">.com</span>
-          <span className="prompt">█</span>
+          <span className={clsx('prompt', 'cursor', { blink: cursorPosition === 'title' })}>█</span>
         </div>
 
         <div className="description flex-col">
@@ -58,8 +62,10 @@ export function MilesJPool() {
         </div>
 
         <div className="signature flex-col">
-          <span>
-            &gt; enjoy your stay █
+          <span onClick={() => setCursorPosition('signature')}>
+            <span>&gt; </span>
+            <span>enjoy your stay </span>
+            <span className={clsx('cursor', { blink: cursorPosition === 'signature' })}>█</span>
           </span>
           <div className="aliens flex">
             <img src="/assets/alien_256.png" alt="alien" className="icon" />
