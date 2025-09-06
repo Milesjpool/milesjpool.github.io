@@ -1,30 +1,39 @@
 import { useGalleryImages } from "./useGalleryImages";
 import "./Gallery.css";
-
-type ImageCardProps = {
-  children: React.ReactNode;
-};
-
-function ImageCard({ children }: ImageCardProps) {
-  return <div className="gallery-item">
-    {children}
-  </div>;
-}
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useResizeListener } from "app/hooks/useResizeListener";
+import { ImageCard } from "./ImageCard";
+import { GalleryColumnProvider, useGalleryColumnContext } from "./GalleryColumnProvider";
 
 export function Gallery() {
-  const imageElements = useGalleryImages();
+  const { width } = useResizeListener();
+  const images = useGalleryImages();
+  const numberOfColumns = Math.floor(width / 250);
 
   return (
     <div className="gallery">
       <div className="gallery-container">
-        {imageElements.map((img, i) => (
-          <ImageCard key={i} >
-            {img}
-          </ImageCard>
-        ))}
+        <GalleryColumnProvider images={images}>
+          {[...Array(numberOfColumns)].map((_, i) => (
+            <GalleryColumn key={i} />
+          ))}
+        </GalleryColumnProvider>
       </div>
-    </div>
+    </div >
   );
 }
 
+
+function GalleryColumn() {
+  const columnRef = useRef<HTMLDivElement>(null);
+  const { images } = useGalleryColumnContext(columnRef);
+
+  return <div className="gallery-column" ref={columnRef}>
+    {images.map((img, i) => (
+      <ImageCard key={i}>
+        {img}
+      </ImageCard>
+    ))}
+  </div>;
+}
 

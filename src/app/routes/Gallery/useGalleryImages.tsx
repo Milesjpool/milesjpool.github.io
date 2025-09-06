@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 
 const aspectRatios = [
   1,        // Square
@@ -18,7 +19,7 @@ const colors = [
 ];
 
 export function useGalleryImages() {
-  const images = Array.from({ length: 30 }, (_, i) => {
+  const images = useMemo(() => Array.from({ length: 30 }, (_, i) => {
     const aspectRatio = aspectRatios[Math.floor(Math.random() * aspectRatios.length)];
     const color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -43,7 +44,7 @@ export function useGalleryImages() {
         {i}
       </div>
     );
-  });
+  }), []);
 
   return images;
 }
