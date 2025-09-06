@@ -1,24 +1,26 @@
-import { useRef, createContext, useContext, useEffect, useMemo } from "react";
+import { useRef, createContext, useContext, useEffect, useMemo, useId } from "react";
 import { useRegistry } from "../../hooks/useRegistry";
 
 type GalleryColumnContextType = {
-  columnImages: Map<React.RefObject<HTMLDivElement>, React.JSX.Element[]>;
-  registerColumn: (ref: React.RefObject<HTMLDivElement>) => void;
-  unregisterColumn: (ref: React.RefObject<HTMLDivElement>) => void;
+  columnImages: Record<string, React.JSX.Element[]>;
+  registerColumn: (id: string, ref: React.RefObject<HTMLDivElement>) => void;
+  unregisterColumn: (id: string) => void;
 };
-const GalleryColumnContext = createContext<GalleryColumnContextType>({ columnImages: new Map(), registerColumn: () => { }, unregisterColumn: () => { } });
+const GalleryColumnContext = createContext<GalleryColumnContextType>({ columnImages: {}, registerColumn: () => { }, unregisterColumn: () => { } });
 
-export function useGalleryColumnContext(columnRef: React.RefObject<HTMLDivElement>): { images: React.JSX.Element[] } {
+export function useGalleryColumnContext(): { ref: React.RefObject<HTMLDivElement>, images: React.JSX.Element[] } {
+  const id = useId();
+  const ref = useRef<HTMLDivElement>(null);
   const { columnImages, registerColumn, unregisterColumn } = useContext(GalleryColumnContext);
 
   useEffect(() => {
-    registerColumn(columnRef);
+    registerColumn(id, ref);
     return () => {
-      unregisterColumn(columnRef);
+      unregisterColumn(id);
     };
-  }, [registerColumn, columnRef, unregisterColumn]);
+  }, [registerColumn, ref, unregisterColumn]);
 
-  return { images: columnImages.get(columnRef) || [] };
+  return { ref, images: columnImages[id] || [] };
 }
 
 type GalleryColumnProviderProps = {
@@ -31,10 +33,11 @@ export function GalleryColumnProvider({ images, children }: GalleryColumnProvide
 
   const columnImages = useMemo(() => {
     return images.reduce((acc, image, index) => {
-      const columnIndex = index % columns.length;
-      acc.set(columns[columnIndex], [...(acc.get(columns[columnIndex]) || []), image]);
+      const columnIds = Object.keys(columns);
+      const columnIndex = index % columnIds.length;
+      acc[columnIds[columnIndex]] = [...(acc[columnIds[columnIndex]] || []), image];
       return acc;
-    }, new Map<React.RefObject<HTMLDivElement>, React.JSX.Element[]>());
+    }, {} as Record<string, JSX.Element[]>);
   }, [images, columns]);
 
   return <GalleryColumnContext.Provider value={{ columnImages, registerColumn, unregisterColumn }}>

@@ -25,10 +25,9 @@ export function Gallery() {
 
 
 function GalleryColumn() {
-  const columnRef = useRef<HTMLDivElement>(null);
-  const { images } = useGalleryColumnContext(columnRef);
+  const { ref, images } = useGalleryColumnContext();
 
-  return <div className="gallery-column" ref={columnRef}>
+  return <div className="gallery-column" ref={ref}>
     {images.map((img, i) => (
       <ImageCard key={i}>
         {img}
