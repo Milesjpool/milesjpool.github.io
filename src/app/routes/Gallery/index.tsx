@@ -35,7 +35,7 @@ type GalleryLayoutProps = {
 };
 function GalleryLayout({ images }: GalleryLayoutProps) {
   const { width } = useResizeListener();
-  const numberOfColumns = Math.floor(width / 250);
+  const numberOfColumns = Math.floor(width / 350)
 
   useImageDistributor(images);
 
