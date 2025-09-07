@@ -4,18 +4,28 @@ import { useResizeListener } from "app/hooks/useResizeListener";
 import { ColumnRegistryProvider } from "./ColumnRegistry";
 import { useImageDistributor } from "./useImageDistributor";
 import { GalleryColumn } from "./GalleryColumn";
+import { useRef } from "react";
+import { LoadingIndicator } from "./LoadingIndicator";
 
 export function Gallery() {
-  const { images, loadMore } = useGalleryImages();
+  const { images, hasMore, loadMore, loading } = useGalleryImages();
+
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="gallery-page">
       <ColumnRegistryProvider>
         <GalleryLayout images={images} />
       </ColumnRegistryProvider>
-      <button onClick={() => loadMore()}>
-        Load more
-      </button>
+      <div ref={sentinelRef} style={{
+        height: '20px',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        {loading && <LoadingIndicator />}
+      </div>
     </div >
   );
 }

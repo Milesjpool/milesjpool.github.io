@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useMemo, useState } from "react";
+import { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
 
 const aspectRatios = [
   1,        // Square
@@ -62,11 +62,20 @@ function fetchImages(count: number, offset: number = 0) {
 }
 
 export function useGalleryImages() {
-  const [images, setImages] = useState(() => fetchImages(PAGE_SIZE));
+  const [loading, setLoading] = useState(false);
+  const [images, setImages] = useState<JSX.Element[]>([]);
+  const hasMore = useRef(true);
 
   const loadMore = useCallback(() => {
-    setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
+    if (!loading && hasMore.current) {
+      setLoading(true);
+      setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
+      setLoading(false);
+      hasMore.current = true;
+    }
   }, [setImages]);
 
-  return { images, loadMore };
+  useEffect(() => loadMore(), [])
+
+  return { images, hasMore, loadMore, loading };
 }
