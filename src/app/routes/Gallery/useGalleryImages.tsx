@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { PropsWithChildren, useCallback, useMemo, useState } from "react";
 
 const aspectRatios = [
   1,        // Square
@@ -10,7 +10,7 @@ const aspectRatios = [
   9 / 16,   // Tall portrait
   5 / 4,    // Slightly tall
   4 / 5,    // Slightly wide
-];
+] as const;
 
 const colors = [
   "#ff6b6b", "#4ecdc4", "#45b7d1", "#ff9ff3", "#54a0ff",
@@ -18,33 +18,55 @@ const colors = [
   "#a55eea", "#26de81", "#fd79a8", "#fdcb6e", "#6c5ce7"
 ];
 
-export function useGalleryImages() {
-  const images = useMemo(() => Array.from({ length: 30 }, (_, i) => {
+type PlaceholderImageProps = {
+  aspectRatio: number;
+  color: string;
+}
+function PlaceholderImage({ aspectRatio, color, children }: PropsWithChildren<PlaceholderImageProps>) {
+  return (
+    <div
+      style={{
+        backgroundColor: color,
+        width: "100%",
+        aspectRatio: aspectRatio,
+        border: "10px dashed black",
+        boxSizing: "border-box",
+        color: "white",
+        fontSize: "2em",
+        fontWeight: "bold",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        textShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+      }}>
+      {children}
+    </div>
+  );
+}
+
+
+const PAGE_SIZE = 30;
+
+function fetchImages(count: number, offset: number = 0) {
+  return Array.from({ length: count }, (_, i) => {
     const aspectRatio = aspectRatios[Math.floor(Math.random() * aspectRatios.length)];
     const color = colors[Math.floor(Math.random() * colors.length)];
 
-    return (
-      <div
-        key={i}
-        style={{
-          backgroundColor: color,
-          width: "100%",
-          aspectRatio: aspectRatio,
-          border: "10px dashed black",
-          boxSizing: "border-box",
-          color: "white",
-          fontSize: "2em",
-          fontWeight: "bold",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          textShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-        }}>
-        {i}
-      </div>
-    );
-  }), []);
+    return <PlaceholderImage key={i + offset}
+      aspectRatio={aspectRatio}
+      color={color}>
+      {i + offset}
+    </PlaceholderImage>
+  });
+}
 
-  return images;
+export function useGalleryImages() {
+  const [images, setImages] = useState(() => fetchImages(PAGE_SIZE));
+
+  const loadMore = useCallback(() => {
+    setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
+  }, [setImages]);
+
+  return { images, loadMore };
 }

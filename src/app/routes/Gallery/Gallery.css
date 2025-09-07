@@ -1,10 +1,10 @@
-.gallery {
+.gallery-page {
   width: 100%;
   height: 100%;
   overflow: scroll;
 }
 
-.gallery-container {
+.gallery-layout {
   max-width: 80%;
   margin: 2em auto;
   display: flex;

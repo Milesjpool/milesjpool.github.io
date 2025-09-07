@@ -1,38 +1,37 @@
-import { useGalleryImages } from "./useGalleryImages";
 import "./Gallery.css";
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useGalleryImages } from "./useGalleryImages";
 import { useResizeListener } from "app/hooks/useResizeListener";
-import { ImageCard } from "./ImageCard";
-import { GalleryColumnProvider, useGalleryColumnContext } from "./GalleryColumnProvider";
+import { ColumnRegistryProvider } from "./ColumnRegistry";
+import { useImageDistributor } from "./useImageDistributor";
+import { GalleryColumn } from "./GalleryColumn";
 
 export function Gallery() {
-  const { width } = useResizeListener();
-  const images = useGalleryImages();
-  const numberOfColumns = Math.floor(width / 250);
+  const { images, loadMore } = useGalleryImages();
 
   return (
-    <div className="gallery">
-      <div className="gallery-container">
-        <GalleryColumnProvider images={images}>
-          {[...Array(numberOfColumns)].map((_, i) => (
-            <GalleryColumn key={i} />
-          ))}
-        </GalleryColumnProvider>
-      </div>
+    <div className="gallery-page">
+      <ColumnRegistryProvider>
+        <GalleryLayout images={images} />
+      </ColumnRegistryProvider>
+      <button onClick={() => loadMore()}>
+        Load more
+      </button>
     </div >
   );
 }
 
+type GalleryLayoutProps = {
+  images: JSX.Element[];
+};
+function GalleryLayout({ images }: GalleryLayoutProps) {
+  const { width } = useResizeListener();
+  const numberOfColumns = Math.floor(width / 250);
 
-function GalleryColumn() {
-  const { ref, images } = useGalleryColumnContext();
+  useImageDistributor(images);
 
-  return <div className="gallery-column" ref={ref}>
-    {images.map((img, i) => (
-      <ImageCard key={i}>
-        {img}
-      </ImageCard>
+  return <div className="gallery-layout">
+    {[...Array(numberOfColumns)].map((_, i) => (
+      <GalleryColumn key={i} />
     ))}
   </div>;
 }
-

@@ -1,18 +1,24 @@
 import { useState, useCallback } from "react";
 
-export function useRegistry<T>() {
-  const [items, setItems] = useState<Record<string, T>>({});
+export type Registry<T> = {
+  registry: Record<string, T>;
+  register: (id: string, context: T) => void;
+  unregister: (id: string) => void;
+};
+
+export function useRegistry<T>(): Registry<T> {
+  const [registry, setRegistry] = useState<Record<string, T>>({});
 
   const register = useCallback((id: string, item: T) => {
-    setItems(prev => ({ ...prev, [id]: item }));
+    setRegistry(prev => ({ ...prev, [id]: item }));
   }, []);
 
   const unregister = useCallback((id: string) => {
-    setItems(prev => {
+    setRegistry(prev => {
       const { [id]: _, ...rest } = prev;
       return rest;
     });
   }, []);
 
-  return { items, register, unregister };
+  return { registry, register, unregister };
 }
