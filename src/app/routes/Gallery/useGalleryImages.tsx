@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
+import { PropsWithChildren, useCallback, useRef, useState } from "react";
 
 const aspectRatios = [
   1,        // Square
@@ -76,7 +76,7 @@ export function useGalleryImages() {
         hasMore.current = images.length < PAGE_SIZE * 3;
       }, 5000);
     }
-  }, [setImages, loading]);
+  }, [images.length, setImages, loading]);
 
   return { images, hasMore: hasMore.current, loadMore, loading };
 }

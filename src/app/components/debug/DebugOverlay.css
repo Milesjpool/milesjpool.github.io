@@ -1,0 +1,12 @@
+.debug-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 6px;
+  font-style: italic;
+  height: 1em;
+  z-index: 1000;
+}

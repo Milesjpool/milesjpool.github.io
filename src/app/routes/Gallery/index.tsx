@@ -4,8 +4,9 @@ import { useResizeListener } from "app/hooks/useResizeListener";
 import { ColumnRegistryProvider } from "./ColumnRegistry";
 import { useImageDistributor } from "./useImageDistributor";
 import { GalleryColumn } from "./GalleryColumn";
-import { useRef, useEffect, useMemo, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { LoadingIndicator } from "./LoadingIndicator";
+import { useDebugContext } from "app/components/debug/DebugContext";
 
 export function Gallery() {
   const { images, hasMore, loadMore, loading } = useGalleryImages();
@@ -34,20 +35,20 @@ export function Gallery() {
     }
   }, [loading, loadMore, hasMore]);
 
+
+  const { setInfo } = useDebugContext();
+
+  useEffect(() => {
+    setInfo({
+      Images: images.length, Loading: loading, Calls: calls, HasMore: hasMore
+    });
+  }, [images.length, loading, calls, hasMore, setInfo]);
+
   return (
     <div className="gallery-page" ref={containerRef}>
       <ColumnRegistryProvider>
         <GalleryLayout images={images} />
       </ColumnRegistryProvider>
-      <div style={{
-        position: 'absolute', top: '10px', left: '10px',
-        backdropFilter: 'blur(30px)',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
-        padding: '10px',
-        borderRadius: '10px'
-      }}>
-        {`Images: ${images.length}, Loading: ${loading}, Calls: ${calls}, HasMore: ${hasMore}`}
-      </div>
       {
         hasMore && <div ref={sentinelRef} style={{
           height: '50%',
@@ -66,6 +67,7 @@ export function Gallery() {
 type GalleryLayoutProps = {
   images: JSX.Element[];
 };
+
 function GalleryLayout({ images }: GalleryLayoutProps) {
   const { width } = useResizeListener();
   const numberOfColumns = Math.floor(width / 350)

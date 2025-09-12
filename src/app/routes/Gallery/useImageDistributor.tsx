@@ -38,5 +38,5 @@ export function useImageDistributor(images: JSX.Element[]) {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [distributedImages, images, columns]);
+  }, [distributedImages, undistributedImages, images, columns]);
 }
