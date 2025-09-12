@@ -1,40 +1,29 @@
-import "./Gallery.css";
-import { useGalleryImages } from "./useGalleryImages";
-import { useResizeListener } from "app/hooks/useResizeListener";
-import { ColumnRegistryProvider } from "./ColumnRegistry";
-import { useImageDistributor } from "./useImageDistributor";
-import { GalleryColumn } from "./GalleryColumn";
-import { useRef, useEffect, useState } from "react";
-import { LoadingIndicator } from "./LoadingIndicator";
 import { useDebugContext } from "app/components/debug/DebugContext";
+import { useInfiniteScroll } from "app/hooks/useInfiniteScroll";
+import { useResizeListener } from "app/hooks/useResizeListener";
+import { useCallback, useEffect, useState } from "react";
+import { ColumnRegistryProvider } from "./ColumnRegistry";
+import { GalleryColumn } from "./GalleryColumn";
+import { LoadingIndicator } from "./LoadingIndicator";
+import { useGalleryImages } from "./useGalleryImages";
+import { useImageDistributor } from "./useImageDistributor";
+
+import "./index.css";
 
 export function Gallery() {
   const { images, hasMore, loadMore, loading } = useGalleryImages();
   const [calls, setCalls] = useState(0);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !loading) {
-          setCalls(prev => prev + 1);
-          loadMore();
-        }
-      });
-    }, {
-      root: containerRef.current,
-      rootMargin: '0px',
-      threshold: 0.8
-    })
-    const current = sentinelRef.current;
-    if (current) {
-      observer.observe(current);
-      return () => observer.unobserve(current);
+  const callback = useCallback(() => {
+    if (!loading) {
+      setCalls(prev => prev + 1);
+      loadMore();
     }
-  }, [loading, loadMore, hasMore]);
+  }, [loadMore, loading]);
 
+  const { containerRef, sentinelRef } = useInfiniteScroll(callback, {
+    threshold: 0.5,
+  });
 
   const { setInfo } = useDebugContext();
 
@@ -49,17 +38,9 @@ export function Gallery() {
       <ColumnRegistryProvider>
         <GalleryLayout images={images} />
       </ColumnRegistryProvider>
-      {
-        hasMore && <div ref={sentinelRef} style={{
-          height: '50%',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          {loading && <LoadingIndicator />}
-        </div>
-      }
+      {hasMore && <div ref={sentinelRef} className="gallery-sentinel">
+        {loading && <LoadingIndicator />}
+      </div>}
     </div >
   );
 }

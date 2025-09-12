@@ -74,7 +74,7 @@ export function useGalleryImages() {
         setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
         setLoading(false);
         hasMore.current = images.length < PAGE_SIZE * 3;
-      }, 5000);
+      }, 2500);
     }
   }, [images.length, setImages, loading]);
 
