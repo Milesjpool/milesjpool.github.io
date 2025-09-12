@@ -4,28 +4,61 @@ import { useResizeListener } from "app/hooks/useResizeListener";
 import { ColumnRegistryProvider } from "./ColumnRegistry";
 import { useImageDistributor } from "./useImageDistributor";
 import { GalleryColumn } from "./GalleryColumn";
-import { useRef } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import { LoadingIndicator } from "./LoadingIndicator";
 
 export function Gallery() {
   const { images, hasMore, loadMore, loading } = useGalleryImages();
+  const [calls, setCalls] = useState(0);
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !loading) {
+          setCalls(prev => prev + 1);
+          loadMore();
+        }
+      });
+    }, {
+      root: containerRef.current,
+      rootMargin: '0px',
+      threshold: 0.8
+    })
+    const current = sentinelRef.current;
+    if (current) {
+      observer.observe(current);
+      return () => observer.unobserve(current);
+    }
+  }, [loading, loadMore, hasMore]);
+
   return (
-    <div className="gallery-page">
+    <div className="gallery-page" ref={containerRef}>
       <ColumnRegistryProvider>
         <GalleryLayout images={images} />
       </ColumnRegistryProvider>
-      <div ref={sentinelRef} style={{
-        height: '20px',
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+      <div style={{
+        position: 'absolute', top: '10px', left: '10px',
+        backdropFilter: 'blur(30px)',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        padding: '10px',
+        borderRadius: '10px'
       }}>
-        {loading && <LoadingIndicator />}
+        {`Images: ${images.length}, Loading: ${loading}, Calls: ${calls}, HasMore: ${hasMore}`}
       </div>
+      {
+        hasMore && <div ref={sentinelRef} style={{
+          height: '50%',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          {loading && <LoadingIndicator />}
+        </div>
+      }
     </div >
   );
 }

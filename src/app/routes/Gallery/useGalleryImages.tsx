@@ -69,13 +69,14 @@ export function useGalleryImages() {
   const loadMore = useCallback(() => {
     if (!loading && hasMore.current) {
       setLoading(true);
-      setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
-      setLoading(false);
-      hasMore.current = true;
+
+      setTimeout(() => {
+        setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
+        setLoading(false);
+        hasMore.current = images.length < PAGE_SIZE * 3;
+      }, 5000);
     }
-  }, [setImages]);
+  }, [setImages, loading]);
 
-  useEffect(() => loadMore(), [])
-
-  return { images, hasMore, loadMore, loading };
+  return { images, hasMore: hasMore.current, loadMore, loading };
 }
