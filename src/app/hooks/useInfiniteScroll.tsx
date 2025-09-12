@@ -1,8 +1,17 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
 
-export function useInfiniteScroll(callback: () => void, options: IntersectionObserverInit = {}) {
+export function useInfiniteScroll(
+  callback: () => void,
+  options: IntersectionObserverInit = {}
+) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
+
+  const observerOptions = useMemo(() => ({
+    root: options.root ?? containerRef.current,
+    threshold: options.threshold,
+    rootMargin: options.rootMargin,
+  }), [options.root, options.threshold, options.rootMargin]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -11,14 +20,14 @@ export function useInfiniteScroll(callback: () => void, options: IntersectionObs
           callback();
         }
       });
-    }, {
-      root: containerRef.current,
-      ...options
-    });
+    }, observerOptions);
+
     if (sentinelRef.current) {
+      console.log("observing sentinel");
       observer.observe(sentinelRef.current);
     }
     return () => observer.disconnect();
-  }, [callback, options]);
+  }, [callback, observerOptions]);
+
   return { containerRef, sentinelRef };
 }

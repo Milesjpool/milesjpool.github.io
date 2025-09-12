@@ -15,11 +15,9 @@ export function Gallery() {
   const [calls, setCalls] = useState(0);
 
   const callback = useCallback(() => {
-    if (!loading) {
-      setCalls(prev => prev + 1);
-      loadMore();
-    }
-  }, [loadMore, loading]);
+    setCalls(prev => prev + 1);
+    loadMore();
+  }, [loadMore]);
 
   const { containerRef, sentinelRef } = useInfiniteScroll(callback, {
     threshold: 0.5,

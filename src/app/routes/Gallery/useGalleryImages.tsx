@@ -62,21 +62,21 @@ function fetchImages(count: number, offset: number = 0) {
 }
 
 export function useGalleryImages() {
-  const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<JSX.Element[]>([]);
+  const loading = useRef(false);
   const hasMore = useRef(true);
 
   const loadMore = useCallback(() => {
-    if (!loading && hasMore.current) {
-      setLoading(true);
+    if (!loading.current && hasMore.current) {
+      loading.current = true;
 
       setTimeout(() => {
         setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
-        setLoading(false);
+        loading.current = false;
         hasMore.current = images.length < PAGE_SIZE * 3;
       }, 2500);
     }
   }, [images.length, setImages, loading]);
 
-  return { images, hasMore: hasMore.current, loadMore, loading };
+  return { images, hasMore: hasMore.current, loadMore, loading: loading.current };
 }
