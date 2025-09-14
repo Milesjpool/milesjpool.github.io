@@ -46,7 +46,7 @@ function PlaceholderImage({ aspectRatio, color, children }: PropsWithChildren<Pl
 }
 
 
-const PAGE_SIZE = 30;
+const PAGE_SIZE = 15;
 
 function fetchImages(count: number, offset: number = 0) {
   return Array.from({ length: count }, (_, i) => {
@@ -74,9 +74,9 @@ export function useGalleryImages() {
         setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
         loading.current = false;
         hasMore.current = images.length < PAGE_SIZE * 3;
-      }, 2500);
+      }, 1500);
     }
   }, [images.length, setImages, loading]);
 
-  return { images, hasMore: hasMore.current, loadMore, loading: loading.current };
+  return { images, hasMore: hasMore.current, loading: loading.current, loadMore };
 }

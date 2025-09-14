@@ -11,7 +11,8 @@ import { useImageDistributor } from "./useImageDistributor";
 import "./index.css";
 
 export function Gallery() {
-  const { images, hasMore, loadMore, loading } = useGalleryImages();
+  const { images, hasMore, loading, loadMore } = useGalleryImages();
+
   const [calls, setCalls] = useState(0);
 
   const callback = useCallback(() => {
@@ -20,14 +21,17 @@ export function Gallery() {
   }, [loadMore]);
 
   const { containerRef, sentinelRef } = useInfiniteScroll(callback, {
-    threshold: 0.5,
+    threshold: 0.3,
   });
 
   const { setInfo } = useDebugContext();
 
   useEffect(() => {
     setInfo({
-      Images: images.length, Loading: loading, Calls: calls, HasMore: hasMore
+      Images: images.length,
+      Loading: loading,
+      Calls: calls,
+      HasMore: hasMore,
     });
   }, [images.length, loading, calls, hasMore, setInfo]);
 

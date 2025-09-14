@@ -1,7 +1,9 @@
 import { useRef, useEffect, useMemo } from "react";
 
+type Callback = () => void;
+
 export function useInfiniteScroll(
-  callback: () => void,
+  callback: Callback,
   options: IntersectionObserverInit = {}
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,17 +17,16 @@ export function useInfiniteScroll(
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          callback();
-        }
-      });
+      const isIntersecting = entries.some(entry => entry.isIntersecting);
+      if (isIntersecting) {
+        callback();
+      }
     }, observerOptions);
 
     if (sentinelRef.current) {
-      console.log("observing sentinel");
       observer.observe(sentinelRef.current);
     }
+
     return () => observer.disconnect();
   }, [callback, observerOptions]);
 
