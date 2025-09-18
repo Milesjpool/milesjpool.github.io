@@ -1,7 +1,7 @@
-import { useDebugContext } from "app/components/debug/DebugContext";
+import { useEventTracking } from "app/components/debug/useEventTracking";
 import { useInfiniteScroll } from "app/hooks/useInfiniteScroll";
 import { useResizeListener } from "app/hooks/useResizeListener";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { ColumnRegistryProvider } from "./ColumnRegistry";
 import { GalleryColumn } from "./GalleryColumn";
 import { LoadingIndicator } from "./LoadingIndicator";
@@ -12,28 +12,16 @@ import "./index.css";
 
 export function Gallery() {
   const { images, hasMore, loading, loadMore } = useGalleryImages();
-
-  const [calls, setCalls] = useState(0);
+  const trackEvent = useEventTracking('Gallery');
 
   const callback = useCallback(() => {
-    setCalls(prev => prev + 1);
+    trackEvent('LoadImages');
     loadMore();
-  }, [loadMore]);
+  }, [loadMore, trackEvent]);
 
   const { containerRef, sentinelRef } = useInfiniteScroll(callback, {
     threshold: 0.3,
   });
-
-  const { setInfo } = useDebugContext();
-
-  useEffect(() => {
-    setInfo({
-      Images: images.length,
-      Loading: loading,
-      Calls: calls,
-      HasMore: hasMore,
-    });
-  }, [images.length, loading, calls, hasMore, setInfo]);
 
   return (
     <div className="gallery-page" ref={containerRef}>

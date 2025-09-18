@@ -1,0 +1,30 @@
+.metric-display {
+  .component-item {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .guage-list {
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    margin-left: 10px;
+
+    .key {
+      margin-right: 5px;
+    }
+
+    .value {
+      font-style: italic;
+      color: slategray;
+
+      &.recently-updated {
+        color: green;
+        font-weight: bold;
+      }
+
+      transition: color 0.5s ease-out,
+      font-weight 0.5s ease-out;
+    }
+  }
+}

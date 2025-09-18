@@ -1,0 +1,48 @@
+.event-display {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  .prompt {
+    font-size: 0.5em;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+
+    animation: fadeIn 0.5s ease-in, newEvent 2s ease-in;
+
+    .component {
+      font-weight: bold;
+    }
+  }
+}
+
+@keyframes newEvent {
+  0% {
+    color: green;
+  }
+
+  90% {
+    color: green;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,18 +1,50 @@
-import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react';
+import { createContext, Dispatch, SetStateAction, useContext, useReducer, useState } from 'react';
+
+export type GaugeValue = number | boolean;
+type CounterValue = number;
+
+type Value = GaugeValue | CounterValue;
+
+export type ComponentMetrics = Record<string, Record<string, Value>>;
+export type ComponentEvents = { component: string, event: string }[];
 
 const DebugContext = createContext<{
-  info: Record<string, unknown>;
-  setInfo: Dispatch<SetStateAction<Record<string, unknown>>>;
-}>({ info: {}, setInfo: () => { } });
+  metrics: ComponentMetrics;
+  dispatchMetric: Dispatch<DebugEvent>;
+  events: ComponentEvents;
+  setEvents: Dispatch<SetStateAction<ComponentEvents>>;
+}>({ metrics: {}, dispatchMetric: () => { }, events: [], setEvents: () => { } });
 
 export function useDebugContext() {
   return useContext(DebugContext);
 }
+type DebugEvent = {
+  type: 'gauge';
+  component: string;
+  gauge: string;
+  value: GaugeValue;
+} | {
+  type: 'count';
+  component: string;
+  counter: string;
+};
 
 export function DebugContextProvider({ children }: { children: React.ReactNode }) {
-  const [info, setInfo] = useState<Record<string, unknown>>({});
+  const [metrics, dispatchMetric] = useReducer((prev: ComponentMetrics, action: DebugEvent) => {
+    const component = action.component;
+    const metrics = prev[component] ?? {};
 
-  return <DebugContext.Provider value={{ info, setInfo }}>
+    switch (action.type) {
+      case 'gauge':
+        return { ...prev, [component]: { ...metrics, [action.gauge]: action.value } };
+      case 'count':
+        return { ...prev, [component]: { ...metrics, [action.counter]: (metrics[action.counter] as number | undefined ?? 0) + 1 } };
+    }
+  }, {});
+
+  const [events, setEvents] = useState<ComponentEvents>([]);
+
+  return <DebugContext.Provider value={{ metrics, dispatchMetric, events, setEvents }}>
     {children}
   </DebugContext.Provider>;
 }

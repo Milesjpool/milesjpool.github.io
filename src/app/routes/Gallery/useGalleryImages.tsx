@@ -1,3 +1,4 @@
+import { useGuage } from 'app/components/debug/useGuage';
 import { PropsWithChildren, useCallback, useRef, useState } from "react";
 
 const aspectRatios = [
@@ -62,9 +63,14 @@ function fetchImages(count: number, offset: number = 0) {
 }
 
 export function useGalleryImages() {
+
   const [images, setImages] = useState<JSX.Element[]>([]);
   const loading = useRef(false);
   const hasMore = useRef(true);
+
+  useGuage('useGalleryImages', 'ImageCount', images.length);
+  useGuage('useGalleryImages', 'Loading', loading.current);
+  useGuage('useGalleryImages', 'HasMore', hasMore.current);
 
   const loadMore = useCallback(() => {
     if (!loading.current && hasMore.current) {

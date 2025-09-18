@@ -9,9 +9,7 @@ export function useGalleryColumnContext(): { ref: RefObject<HTMLDivElement>, ima
 
   useEffect(() => {
     register(id, { ref, images, setImages });
-    return () => {
-      unregister(id);
-    };
+    return () => unregister(id);
   }, [register, ref, unregister]);
 
   return { ref, images };
