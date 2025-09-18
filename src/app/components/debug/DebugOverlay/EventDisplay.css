@@ -1,7 +1,7 @@
 .event-display {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  margin: 10px;
   padding: 5px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -12,15 +12,33 @@
 
   .item {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
+    flex-direction: column;
+    margin: 2px 0;
 
     animation: fadeIn 0.5s ease-in, newEvent 2s ease-in;
 
-    .component {
-      font-weight: bold;
+    .label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+
+      .component {
+        font-weight: bold;
+      }
+    }
+
+    .data {
+      color: slategray;
+      font-style: italic;
+      margin-left: 10px;
+      font-size: 0.8em;
+    }
+
+    &.removed {
+      opacity: 0;
+      animation: fadeOut 0.5s ease-out;
     }
   }
 }
@@ -44,5 +62,18 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    color: red;
+    opacity: 0;
+    transform: translateY(-100%);
   }
 }

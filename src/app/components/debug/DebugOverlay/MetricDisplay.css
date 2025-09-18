@@ -1,6 +1,10 @@
 .metric-display {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 10px;
+
   .component-item {
-    margin-bottom: 10px;
     font-weight: bold;
   }
 

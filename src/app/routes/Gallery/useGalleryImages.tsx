@@ -1,3 +1,4 @@
+import { useEventTracking } from 'app/components/debug/useEventTracking';
 import { useGuage } from 'app/components/debug/useGuage';
 import { PropsWithChildren, useCallback, useRef, useState } from "react";
 
@@ -63,16 +64,17 @@ function fetchImages(count: number, offset: number = 0) {
 }
 
 export function useGalleryImages() {
+  const trackEvent = useEventTracking('useGalleryImages');
 
   const [images, setImages] = useState<JSX.Element[]>([]);
   const loading = useRef(false);
   const hasMore = useRef(true);
 
   useGuage('useGalleryImages', 'ImageCount', images.length);
-  useGuage('useGalleryImages', 'Loading', loading.current);
-  useGuage('useGalleryImages', 'HasMore', hasMore.current);
 
   const loadMore = useCallback(() => {
+    trackEvent('LoadImages', { hasMore: hasMore.current, loading: loading.current });
+
     if (!loading.current && hasMore.current) {
       loading.current = true;
 
@@ -82,7 +84,7 @@ export function useGalleryImages() {
         hasMore.current = images.length < PAGE_SIZE * 3;
       }, 1500);
     }
-  }, [images.length, setImages, loading]);
+  }, [images.length, setImages, loading, trackEvent]);
 
   return { images, hasMore: hasMore.current, loading: loading.current, loadMore };
 }

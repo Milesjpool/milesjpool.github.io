@@ -12,12 +12,10 @@ import "./index.css";
 
 export function Gallery() {
   const { images, hasMore, loading, loadMore } = useGalleryImages();
-  const trackEvent = useEventTracking('Gallery');
 
   const callback = useCallback(() => {
-    trackEvent('LoadImages');
     loadMore();
-  }, [loadMore, trackEvent]);
+  }, [loadMore]);
 
   const { containerRef, sentinelRef } = useInfiniteScroll(callback, {
     threshold: 0.3,

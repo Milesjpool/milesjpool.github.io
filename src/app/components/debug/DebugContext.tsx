@@ -6,7 +6,7 @@ type CounterValue = number;
 type Value = GaugeValue | CounterValue;
 
 export type ComponentMetrics = Record<string, Record<string, Value>>;
-export type ComponentEvents = { component: string, event: string }[];
+export type ComponentEvents = { id: string, component: string, event: string, data: Record<string, any> }[];
 
 const DebugContext = createContext<{
   metrics: ComponentMetrics;
