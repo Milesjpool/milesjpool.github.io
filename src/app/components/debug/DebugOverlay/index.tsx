@@ -1,12 +1,14 @@
-import { useMemo } from "react";
+import clsx from "clsx";
+import { useMemo, useReducer, useState } from "react";
 import { useDebugContext } from "../DebugContext";
+import { EventDisplay } from "./EventDisplay";
 import { MetricDisplay } from "./MetricDisplay";
 
 import "./DebugOverlay.css";
-import { EventDisplay } from "./EventDisplay";
 
 export function DebugOverlay() {
   const { metrics, events } = useDebugContext();
+  const [minimized, toggleMinimized] = useReducer((prev: boolean) => !prev, false);
 
   const metricCount = useMemo(() => Object.keys(metrics).length, [metrics]);
   const eventCount = useMemo(() => events.length, [events]);
@@ -15,8 +17,15 @@ export function DebugOverlay() {
     return null;
   }
 
-  return <div className="debug-overlay">
-    <MetricDisplay metrics={metrics} />
-    <EventDisplay events={events} />
+  return <div className={clsx("debug-overlay", minimized && "minimized")}>
+    <button className="minimize-maximize" onClick={() => toggleMinimized()}>
+      {minimized ? '+' : '-'}
+    </button>
+    {!minimized && (
+      <>
+        <MetricDisplay metrics={metrics} />
+        <EventDisplay events={events} />
+      </>
+    )}
   </div >
 }
