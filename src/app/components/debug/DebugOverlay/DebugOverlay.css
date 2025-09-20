@@ -17,18 +17,30 @@
   &.minimized {
     min-width: 0px;
     min-height: 0px;
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
   }
 
   .minimize-maximize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     position: absolute;
+    margin: 2px;
     top: 0;
     right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 0 6px 0 6px;
+    width: 10px;
+    height: 10px;
+    color: rgba(0, 49, 106, 0.8);
+    background-color: transparent;
+    border-radius: 50%;
     cursor: pointer;
+    padding: 0 1px 2px 0;
+
+    &:hover {
+      background-color: rgba(111, 178, 255, 0.8);
+      color: white;
+    }
   }
 }

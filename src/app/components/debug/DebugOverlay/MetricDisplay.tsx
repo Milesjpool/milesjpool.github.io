@@ -9,6 +9,11 @@ type MetricDisplayProps = {
 }
 
 export function MetricDisplay({ metrics }: MetricDisplayProps) {
+
+  if (Object.keys(metrics).length === 0) {
+    return null;
+  }
+
   return <div className="metric-display">
     {Object.entries(metrics).map(([component, gauges]) => (
       <div key={component} className="component-item">
