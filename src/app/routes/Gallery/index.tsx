@@ -1,4 +1,3 @@
-import { useEventTracking } from "app/components/debug/useEventTracking";
 import { useInfiniteScroll } from "app/hooks/useInfiniteScroll";
 import { useResizeListener } from "app/hooks/useResizeListener";
 import { useCallback } from "react";
