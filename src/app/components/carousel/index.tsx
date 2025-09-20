@@ -4,6 +4,7 @@ import { mod } from "ts/mod";
 import { useArrowNavigation } from "app/hooks/useArrowNavigation";
 import { useSearchParams } from "react-router-dom";
 import { CarouselContent } from "./CarouselContent";
+import { useEventTracking } from "../debug/useEventTracking";
 
 import "./Carousel.css";
 
@@ -14,6 +15,7 @@ type CarouselProps = {
 const CAROUSEL_INDEX_PARAM = "cIdx";
 
 export function Carousel({ items }: CarouselProps) {
+  const trackEvent = useEventTracking("Carousel");
   const [params, setParams] = useSearchParams({ [CAROUSEL_INDEX_PARAM]: "0" });
 
   const [index, setIndex] = useState(() => parseInt(params.get(CAROUSEL_INDEX_PARAM) || "0"));
@@ -23,6 +25,7 @@ export function Carousel({ items }: CarouselProps) {
 
 
   const handleNavigation = (direction: Direction) => {
+    trackEvent('handleNavigation', { direction })
     if (direction === Direction.Left) {
       setIndex(index - 1);
     }
@@ -35,9 +38,9 @@ export function Carousel({ items }: CarouselProps) {
 
   return (
     <div className='carousel flex'>
-      <NavArrow onClick={() => setIndex(index - 1)} direction={Direction.Left} />
+      <NavArrow onClick={() => handleNavigation(Direction.Left)} direction={Direction.Left} />
       <CarouselContent index={index} items={items} onSwipe={handleNavigation} />
-      <NavArrow onClick={() => setIndex(index + 1)} direction={Direction.Right} />
+      <NavArrow onClick={() => handleNavigation(Direction.Right)} direction={Direction.Right} />
     </div>
   );
 }
