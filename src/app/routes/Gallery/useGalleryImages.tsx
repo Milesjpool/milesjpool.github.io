@@ -86,5 +86,10 @@ export function useGalleryImages() {
     }
   }, [images.length, setImages, loading, trackEvent]);
 
-  return { images, hasMore: hasMore.current, loading: loading.current, loadMore };
+  return {
+    images,
+    hasMore: hasMore.current,
+    loading: loading.current,
+    loadMore
+  };
 }

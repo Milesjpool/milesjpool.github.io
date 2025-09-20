@@ -1,4 +1,4 @@
-import { useRef, useEffect, useId, RefObject, ReactNode, useState } from "react";
+import { useRef, useEffect, useId, RefObject, useState } from "react";
 import { useColumnRegistry } from "./ColumnRegistry";
 
 export function useGalleryColumnContext(): { ref: RefObject<HTMLDivElement>, images: JSX.Element[] } {
@@ -8,13 +8,9 @@ export function useGalleryColumnContext(): { ref: RefObject<HTMLDivElement>, ima
   const { register, unregister } = useColumnRegistry();
 
   useEffect(() => {
-    register(id, { ref, images, setImages });
+    register(id, { ref, setImages });
     return () => unregister(id);
-  }, [register, ref, unregister]);
+  }, [register, ref, unregister, id]);
 
   return { ref, images };
 }
-
-export type GalleryColumnProviderProps = {
-  children: ReactNode;
-};
