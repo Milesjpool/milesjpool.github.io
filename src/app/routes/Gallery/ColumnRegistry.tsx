@@ -1,15 +1,16 @@
 import { Registry, useRegistry } from "app/hooks/useRegistry";
 import { createContext, Dispatch, ReactNode, RefObject, useContext } from "react";
+import { noop } from "ts/noop";
 
-export type ColumnContext = {
+type ColumnContext = {
   ref: RefObject<HTMLDivElement>;
   setImages: Dispatch<React.SetStateAction<JSX.Element[]>>;
 }
 
 const ColumnRegistryContext = createContext<Registry<ColumnContext>>({
   registry: {},
-  register: () => { },
-  unregister: () => { }
+  register: noop,
+  unregister: noop,
 });
 
 export function useColumnRegistry(): Registry<ColumnContext> {

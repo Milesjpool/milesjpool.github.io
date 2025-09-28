@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { noop } from "ts/noop";
 
 export type DragOffset = [number, number];
 
@@ -8,8 +9,6 @@ type useDragEffectProps = {
   onDrag?: (offset: DragOffset, e: Event) => void;
   onDragEnd?: (offset: DragOffset) => void;
 };
-
-const noop = () => { };
 
 export function useDragEffect(
   { dragAreaRef,

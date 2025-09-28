@@ -1,4 +1,5 @@
 import { createContext, Dispatch, SetStateAction, useContext, useReducer, useState } from 'react';
+import { noop } from 'ts/noop';
 
 export type GaugeValue = number | boolean;
 type CounterValue = number;
@@ -13,7 +14,7 @@ const DebugContext = createContext<{
   dispatchMetric: Dispatch<DebugEvent>;
   events: ComponentEvents;
   setEvents: Dispatch<SetStateAction<ComponentEvents>>;
-}>({ metrics: {}, dispatchMetric: () => { }, events: [], setEvents: () => { } });
+}>({ metrics: {}, dispatchMetric: noop, events: [], setEvents: noop });
 
 export function useDebugContext() {
   return useContext(DebugContext);

@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import { noop } from "ts/noop";
 
 type ImageProviderContextType = {
   images: JSX.Element[];
@@ -10,7 +11,7 @@ export const ImageProviderContext = createContext<ImageProviderContextType>({
   images: [],
   hasMore: false,
   loading: false,
-  loadMore: () => { }
+  loadMore: noop,
 });
 
 export function useImageProvider(): ImageProviderContextType {
