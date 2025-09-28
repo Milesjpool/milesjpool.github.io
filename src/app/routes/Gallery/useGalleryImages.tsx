@@ -67,29 +67,33 @@ export function useGalleryImages() {
   const trackEvent = useEventTracking('useGalleryImages');
 
   const [images, setImages] = useState<JSX.Element[]>([]);
-  const loading = useRef(false);
-  const hasMore = useRef(true);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
 
   useGuage('useGalleryImages', 'ImageCount', images.length);
 
   const loadMore = useCallback(() => {
-    trackEvent('LoadImages', { hasMore: hasMore.current, loading: loading.current });
+    trackEvent('LoadImages', { hasMore, loading });
 
-    if (!loading.current && hasMore.current) {
-      loading.current = true;
+    if (!loading && hasMore) {
+      setLoading(true);
 
       setTimeout(() => {
-        setImages(prev => [...prev, ...fetchImages(PAGE_SIZE, prev.length)])
-        loading.current = false;
-        hasMore.current = images.length < PAGE_SIZE * 3;
+        setImages(prev => {
+          const newImages = [...prev, ...fetchImages(PAGE_SIZE, prev.length)];
+          setHasMore(newImages.length < PAGE_SIZE * 3);
+          return newImages;
+        });
+
+        setLoading(false);
       }, 1500);
     }
-  }, [images.length, setImages, loading, trackEvent]);
+  }, [loading, hasMore, trackEvent]);
 
   return {
     images,
-    hasMore: hasMore.current,
-    loading: loading.current,
+    hasMore,
+    loading,
     loadMore
   };
 }
