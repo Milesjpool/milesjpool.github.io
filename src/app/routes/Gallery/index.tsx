@@ -1,22 +1,17 @@
 import { useInfiniteScroll } from "app/hooks/useInfiniteScroll";
 import { useResizeListener } from "app/hooks/useResizeListener";
-import { useCallback } from "react";
 import { ColumnRegistryProvider } from "./ColumnRegistry";
-import { GalleryColumn } from "./GalleryColumn";
-import { LoadingIndicator } from "./LoadingIndicator";
-import { useGalleryImages } from "./useGalleryImages";
+import { ImageColumn } from "./components/ImageColumn";
+import { LoadingIndicator } from "./components/LoadingIndicator";
+import { useImageProvider } from "./useImageProvider";
 import { useImageDistributor } from "./useImageDistributor";
 
 import "./index.css";
 
 export function Gallery() {
-  const { images, hasMore, loading, loadMore } = useGalleryImages();
+  const { images, hasMore, loading, loadMore } = useImageProvider();
 
-  const callback = useCallback(() => {
-    loadMore();
-  }, [loadMore]);
-
-  const { containerRef, sentinelRef } = useInfiniteScroll(callback, {
+  const { containerRef, sentinelRef } = useInfiniteScroll(loadMore, {
     threshold: 0.3,
   });
 
@@ -44,7 +39,7 @@ function GalleryLayout({ images }: GalleryLayoutProps) {
 
   return <div className="gallery-layout">
     {[...Array(numberOfColumns)].map((_, i) => (
-      <GalleryColumn key={i} />
+      <ImageColumn key={i} />
     ))}
   </div>;
 }

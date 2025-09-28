@@ -5,7 +5,7 @@ import { Home } from "./routes/Home";
 import { OhYou } from "./routes/OhYou";
 import { CurriculumVitae } from "./routes/CurriculumVitae";
 import { NotFound } from "./routes/NotFound";
-import { Gallery } from "./routes/Gallery";
+import { GalleryDemo } from "./routes/Gallery/Demo";
 
 import "./App.css"
 
@@ -27,7 +27,7 @@ export function App() {
                 <Route index element={<Navigate to="./1" />} />
                 <Route path=":comicId" element={<OhYou />} />
               </Route>
-              <Route path='/gallery' element={<Gallery />} />
+              <Route path='/gallery/demo' element={<GalleryDemo />} />
               <Route path="/curriculum-vitae" element={<CurriculumVitae />} />
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<Navigate to="/404" />} />

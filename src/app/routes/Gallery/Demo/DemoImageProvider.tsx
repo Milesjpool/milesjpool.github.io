@@ -1,6 +1,8 @@
+import { ImageProviderContext } from "../useImageProvider";
 import { useEventTracking } from 'app/components/debug/useEventTracking';
 import { useGuage } from 'app/components/debug/useGuage';
-import { PropsWithChildren, useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
+import { PlaceholderImage } from "./PlaceholderImage";
 
 const aspectRatios = [
   1,        // Square
@@ -20,36 +22,6 @@ const colors = [
   "#a55eea", "#26de81", "#fd79a8", "#fdcb6e", "#6c5ce7"
 ];
 
-type PlaceholderImageProps = {
-  aspectRatio: number;
-  color: string;
-}
-function PlaceholderImage({ aspectRatio, color, children }: PropsWithChildren<PlaceholderImageProps>) {
-  return (
-    <div
-      style={{
-        backgroundColor: color,
-        width: "100%",
-        aspectRatio: aspectRatio,
-        border: "10px dashed black",
-        boxSizing: "border-box",
-        color: "white",
-        fontSize: "2em",
-        fontWeight: "bold",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        textShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-      }}>
-      {children}
-    </div>
-  );
-}
-
-
-const PAGE_SIZE = 15;
-
 function fetchImages(count: number, offset: number = 0) {
   return Array.from({ length: count }, (_, i) => {
     const aspectRatio = aspectRatios[Math.floor(Math.random() * aspectRatios.length)];
@@ -63,37 +35,40 @@ function fetchImages(count: number, offset: number = 0) {
   });
 }
 
-export function useGalleryImages() {
-  const trackEvent = useEventTracking('useGalleryImages');
+type DemoImageProviderProps = {
+  pageSize: number;
+  totalImages: number;
+  delay: number;
+  children: React.ReactNode;
+};
+
+export function DemoImageProvider({ pageSize, totalImages, delay, children }: DemoImageProviderProps) {
+  const trackEvent = useEventTracking('DemoImageProvider');
 
   const [images, setImages] = useState<JSX.Element[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
-  useGuage('useGalleryImages', 'ImageCount', images.length);
+  useGuage('DemoImageProvider', 'ImageCount', images.length);
 
   const loadMore = useCallback(() => {
     trackEvent('LoadImages', { hasMore, loading });
+    const remainingImages = totalImages - images.length;
+    const imagesToFetch = Math.min(pageSize, remainingImages);
+    const newHasMore = imagesToFetch < remainingImages;
 
     if (!loading && hasMore) {
       setLoading(true);
 
       setTimeout(() => {
-        setImages(prev => {
-          const newImages = [...prev, ...fetchImages(PAGE_SIZE, prev.length)];
-          setHasMore(newImages.length < PAGE_SIZE * 3);
-          return newImages;
-        });
-
+        setImages(prev => [...prev, ...fetchImages(imagesToFetch, prev.length)]);
+        setHasMore(newHasMore);
         setLoading(false);
-      }, 1500);
+      }, delay);
     }
-  }, [loading, hasMore, trackEvent]);
+  }, [delay, hasMore, images, loading, pageSize, totalImages, trackEvent]);
 
-  return {
-    images,
-    hasMore,
-    loading,
-    loadMore
-  };
+  return <ImageProviderContext.Provider value={{ images, hasMore, loading, loadMore }}>
+    {children}
+  </ImageProviderContext.Provider>;
 }
