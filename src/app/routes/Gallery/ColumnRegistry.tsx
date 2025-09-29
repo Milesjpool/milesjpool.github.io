@@ -20,7 +20,6 @@ export function useColumnRegistry(): Registry<ColumnContext> {
 type ColumnRegistryProviderProps = {
   children: ReactNode;
 };
-
 export function ColumnRegistryProvider({ children }: ColumnRegistryProviderProps) {
   const { registry, register, unregister } = useRegistry<ColumnContext>();
 

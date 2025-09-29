@@ -1,7 +1,7 @@
 import { ImageProviderContext } from "../useImageProvider";
 import { useEventTracking } from 'app/components/debug/useEventTracking';
 import { useGuage } from 'app/components/debug/useGuage';
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { PlaceholderImage } from "./PlaceholderImage";
 
 const aspectRatios = [
@@ -22,7 +22,7 @@ const colors = [
   "#a55eea", "#26de81", "#fd79a8", "#fdcb6e", "#6c5ce7"
 ];
 
-function fetchImages(count: number, offset: number = 0) {
+function fetch({ count, offset }: { count: number, offset: number }) {
   return Array.from({ length: count }, (_, i) => {
     const aspectRatio = aspectRatios[Math.floor(Math.random() * aspectRatios.length)];
     const color = colors[Math.floor(Math.random() * colors.length)];
@@ -31,7 +31,7 @@ function fetchImages(count: number, offset: number = 0) {
       aspectRatio={aspectRatio}
       color={color}>
       {i + offset}
-    </PlaceholderImage>
+    </PlaceholderImage>;
   });
 }
 
@@ -46,27 +46,26 @@ export function DemoImageProvider({ pageSize, totalImages, delay, children }: De
   const trackEvent = useEventTracking('DemoImageProvider');
 
   const [images, setImages] = useState<JSX.Element[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-
   useGuage('DemoImageProvider', 'ImageCount', images.length);
+
+  const [loading, setLoading] = useState(false);
+  const hasMore = useMemo(() => images.length < totalImages, [images.length, totalImages]);
 
   const loadMore = useCallback(() => {
     trackEvent('LoadImages', { hasMore, loading });
-    const remainingImages = totalImages - images.length;
-    const imagesToFetch = Math.min(pageSize, remainingImages);
-    const newHasMore = imagesToFetch < remainingImages;
-
     if (!loading && hasMore) {
       setLoading(true);
 
       setTimeout(() => {
-        setImages(prev => [...prev, ...fetchImages(imagesToFetch, prev.length)]);
-        setHasMore(newHasMore);
+        const newImages = fetch({
+          count: Math.min(pageSize, (totalImages - images.length)),
+          offset: images.length
+        });
+        setImages(prev => [...prev, ...newImages]);
         setLoading(false);
       }, delay);
     }
-  }, [delay, hasMore, images, loading, pageSize, totalImages, trackEvent]);
+  }, [images.length, hasMore, loading, pageSize, totalImages, delay, trackEvent]);
 
   return <ImageProviderContext.Provider value={{ images, hasMore, loading, loadMore }}>
     {children}

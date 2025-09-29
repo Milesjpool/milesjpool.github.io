@@ -39,4 +39,6 @@ export function useImageDistributor(images: JSX.Element[]) {
       }
     };
   }, [distributedImages, undistributedImages, images, columns]);
+
+  return { isDistributing: distributedImages.length < images.length };
 }
