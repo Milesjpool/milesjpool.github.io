@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 type PlaceholderImageProps = {
-  aspectRatio: number;
+  aspectRatio?: number;
   color: string;
 }
 

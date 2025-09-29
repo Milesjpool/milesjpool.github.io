@@ -2,18 +2,22 @@ import { useRef, useEffect, useMemo } from "react";
 
 type Callback = () => void;
 
+type Options = IntersectionObserverInit & {
+  root?: HTMLDivElement | null;
+};
+
 export function useInfiniteScroll(
   callback: Callback,
-  options: IntersectionObserverInit = {}
+  options: Options = {}
 ) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(options.root ?? null);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   const observerOptions = useMemo(() => ({
-    root: options.root ?? containerRef.current,
+    root: containerRef.current,
     threshold: options.threshold,
     rootMargin: options.rootMargin,
-  }), [options.root, options.threshold, options.rootMargin]);
+  }), [options.threshold, options.rootMargin]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

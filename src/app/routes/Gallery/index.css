@@ -1,7 +1,10 @@
-.gallery-page {
+.gallery {
   width: 100%;
-  height: 100%;
-  overflow: scroll;
+
+  &.scrollable {
+    height: 100%;
+    overflow: scroll;
+  }
 }
 
 .gallery-sentinel {
@@ -20,6 +23,6 @@
 
 .gallery-layout {
   max-width: 80%;
-  margin: 2em auto;
+  margin: auto;
   display: flex;
 }

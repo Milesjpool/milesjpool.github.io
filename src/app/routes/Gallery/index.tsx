@@ -7,11 +7,15 @@ import { useImageProvider } from "./useImageProvider";
 import { useImageDistributor } from "./useImageDistributor";
 import { useCallback, useEffect, useState } from "react";
 import { noop } from "ts/noop";
-
-import "./index.css";
 import clsx from "clsx";
 
-export function Gallery() {
+import "./index.css";
+
+type GalleryProps = {
+  scrollContainer?: React.RefObject<HTMLDivElement>;
+}
+
+export function Gallery({ scrollContainer }: GalleryProps) {
   const { images, hasMore, loading, loadMore: loadMoreImages } = useImageProvider();
   const [rendering, setRendering] = useState(false);
 
@@ -21,11 +25,12 @@ export function Gallery() {
   }, [loadMoreImages, rendering]);
 
   const { containerRef, sentinelRef } = useInfiniteScroll(loadMore, {
+    root: scrollContainer?.current,
     threshold: 0.3,
   });
 
   return (
-    <div className="gallery-page" ref={containerRef}>
+    <div className={clsx("gallery", { scrollable: !scrollContainer })} ref={containerRef}>
       <ColumnRegistryProvider>
         <GalleryLayout images={images} onRendering={setRendering} />
       </ColumnRegistryProvider>
