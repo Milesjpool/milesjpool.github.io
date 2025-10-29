@@ -22,14 +22,23 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>() {
 
     updateSize();
 
-    const resizeObserver = new ResizeObserver(updateSize);
-    if (elementRef.current) {
-      resizeObserver.observe(elementRef.current);
-    }
+    // Check if ResizeObserver is available
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(updateSize);
+      if (elementRef.current) {
+        resizeObserver.observe(elementRef.current);
+      }
 
-    return () => {
-      resizeObserver.disconnect();
-    };
+      return () => {
+        resizeObserver.disconnect();
+      };
+    } else {
+      // Fallback to window resize listener
+      window.addEventListener('resize', updateSize);
+      return () => {
+        window.removeEventListener('resize', updateSize);
+      };
+    }
   }, []);
 
   return { elementRef, elementSize };
