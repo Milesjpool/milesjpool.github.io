@@ -3,6 +3,7 @@ import { NotionPost } from "./NotionPost";
 import { WhatTheHex } from "./WhatTheHex";
 import { OhYou } from "./OhYou";
 import { HireAnApprentice } from "./HireAnApprentice";
+import { MasonryDemo } from "./MasonryDemo";
 // import { CurriculumVitae } from "./CurriculumVitae";
 
 export const CarouselItemSet = [
@@ -30,10 +31,7 @@ export const CarouselItemSet = [
     href="https://milesjpool.notion.site/How-we-talk-about-project-dates-246ea37a280e80b1a925e96d8c852525"
   />,
   <HireAnApprentice />,
-
-  // TODO: potential additions
-  // - Middle-class rhyming slang
-  // - Stereotypical SAAS-startup style landing page 
+  <MasonryDemo />,
 ]
 
 
