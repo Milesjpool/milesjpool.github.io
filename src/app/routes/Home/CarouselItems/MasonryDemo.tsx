@@ -88,6 +88,7 @@ function ContentRow({ log, children, childPosition }: ContentRowProps) {
     <div className="masonry-demo-item content" key={`content-item-${preAnimationKey}-${postAnimationKey}`}
       style={{
         width: `calc(${childWidth * sliceWidth}px - 0.5em)`,
+        margin: '0 0.25em',
         transition: `width 5s ease-in-out`,
       }}
     >
