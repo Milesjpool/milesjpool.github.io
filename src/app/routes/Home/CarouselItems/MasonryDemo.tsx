@@ -32,7 +32,7 @@ export function MasonryDemo() {
       <ContentRow key={`content-row-3`} childPosition={{ offset: 0.25, width: 12 }} >
         <div className="flex-row">
           <h1>{isHovered ? "📸" : "📷"}</h1>
-          <p>{"A toybox 'masonry' style gallery component, built for my personal photography page."}</p>
+          <p>{"A playful, dynamic 'masonry' style gallery, built for my personal photography page"}</p>
         </div>
       </ContentRow>
       {[...Array(bottomRows)].map((_, i) => (
