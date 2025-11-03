@@ -11,7 +11,7 @@ type CardStyle = {
   gridRowEnd: number;
 };
 
-function GuitarExCard({ style }: { style: CardStyle }) {
+function GuitarExCard({ style, 'data-card-index': dataCardIndex }: { style: CardStyle; 'data-card-index'?: number }) {
   return (
     <a
       href={GUITAREX_URL}
@@ -19,6 +19,7 @@ function GuitarExCard({ style }: { style: CardStyle }) {
       rel="noopener noreferrer"
       className="slop-box-card slop-box-card-link"
       style={style}
+      data-card-index={dataCardIndex}
     >
       <div className="slop-box-card-hero">
         <img src={GUITAREX_HERO} alt="GuitarEx AI" />
@@ -54,9 +55,9 @@ export function SlopBox() {
       {cards.map((card, index) => {
         const { content, ...style } = card;
         if (content === 'guitarex') {
-          return <GuitarExCard key={index} style={style} />;
+          return <GuitarExCard key={index} style={style} data-card-index={index} />;
         }
-        return <div key={index} className="slop-box-card" style={style}><AiGem /></div>;
+        return <div key={index} className="slop-box-card" style={style} data-card-index={index}><AiGem /></div>;
       })}
     </div>
   );
