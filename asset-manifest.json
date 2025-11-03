@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.84f54377.css",
-    "main.js": "/static/js/main.cdfae4c1.js",
+    "main.css": "/static/css/main.8c5ce197.css",
+    "main.js": "/static/js/main.7dc23649.js",
     "static/js/453.9b642663.chunk.js": "/static/js/453.9b642663.chunk.js",
     "static/media/title.png": "/static/media/title.7b83b3721600d88f6372.png",
     "static/media/github_pages_gem.svg": "/static/media/github_pages_gem.f763c408c2eb03d7b175b546fa719c09.svg",
@@ -14,14 +14,15 @@
     "static/media/linkedin_gem.svg": "/static/media/linkedin_gem.e13688ee33468455999437701872a988.svg",
     "index.html": "/index.html",
     "static/media/people.svg": "/static/media/people.5a1b857249c4f182fa911b6cd8b82ab9.svg",
+    "static/media/ai_gem.svg": "/static/media/ai_gem.ade62473233a8ca38bf769cccb883fa2.svg",
     "static/media/github_gem.svg": "/static/media/github_gem.61efae3371211cf99a50bc8ee8b821f6.svg",
     "static/media/gcp_gem.svg": "/static/media/gcp_gem.ae54a0b8f0deb32a3cd7e5a276399779.svg",
-    "main.84f54377.css.map": "/static/css/main.84f54377.css.map",
-    "main.cdfae4c1.js.map": "/static/js/main.cdfae4c1.js.map",
+    "main.8c5ce197.css.map": "/static/css/main.8c5ce197.css.map",
+    "main.7dc23649.js.map": "/static/js/main.7dc23649.js.map",
     "453.9b642663.chunk.js.map": "/static/js/453.9b642663.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.84f54377.css",
-    "static/js/main.cdfae4c1.js"
+    "static/css/main.8c5ce197.css",
+    "static/js/main.7dc23649.js"
   ]
 }
