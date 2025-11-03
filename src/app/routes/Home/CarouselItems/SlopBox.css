@@ -1,0 +1,162 @@
+.slop-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #e6f2ff;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.5em;
+  padding: 1em;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.slop-box-title-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.slop-box-title {
+  font-size: 4em;
+  font-weight: bold;
+  font-family: 'Rockwell', 'Rockwell Nova', 'Courier', 'Courier New', monospace;
+  color: #363732;
+  margin: 0;
+
+  @media (max-width: 600px) {
+    font-size: 2.5em;
+  }
+}
+
+.slop-box-subtitle {
+  font-size: 1.2em;
+  color: #666;
+  margin: 0.5em 0 0 0;
+  background-color: #f5f5f5;
+  padding: 0.3em 1em;
+  border-radius: 2em;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 600px) {
+    font-size: 1em;
+  }
+}
+
+.ai-blue {
+  color: #0066cc;
+}
+
+.slop-grey {
+  color: #444444;
+  font-style: italic;
+}
+
+.box-blue {
+  color: #0066cc;
+}
+
+.slop-box-card {
+  background-color: #cce5ff;
+  border: 2px dashed #99cce6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+}
+
+.slop-box-card:not(.slop-box-card-link) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 2em;
+    height: 2em;
+    fill: #0066cc;
+    opacity: 0.4;
+  }
+}
+
+.slop-box-card-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  background-color: white;
+  overflow: hidden;
+  border: none;
+  border-radius: 0.5em;
+}
+
+.slop-box-card-link:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.slop-box-card-hero {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px);
+    transition: filter 0.3s ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+
+.slop-box-card-link:hover .slop-box-card-hero img {
+  filter: blur(0);
+}
+
+.slop-box-card-link:hover .slop-box-card-hero::after {
+  opacity: 0;
+}
+
+.slop-box-card-content {
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  color: #363732;
+
+  >div {
+    text-align: center;
+  }
+}
+
+.slop-box-card-subtitle {
+  font-size: 0.7em;
+  color: #666;
+  margin-top: 0.3em;
+  font-weight: normal;
+}
+
+.guitarex-ai {
+  color: #dc0000;
+  font-size: 0.6em;
+  vertical-align: super;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

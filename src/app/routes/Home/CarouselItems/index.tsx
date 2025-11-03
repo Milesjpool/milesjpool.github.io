@@ -4,6 +4,7 @@ import { WhatTheHex } from "./WhatTheHex";
 import { OhYou } from "./OhYou";
 import { HireAnApprentice } from "./HireAnApprentice";
 import { MasonryDemo } from "./MasonryDemo";
+import { SlopBox } from "./SlopBox";
 // import { CurriculumVitae } from "./CurriculumVitae";
 
 export const CarouselItemSet = [
@@ -23,6 +24,7 @@ export const CarouselItemSet = [
     href="https://milesjpool.notion.site/Colour-distance-calculation-pt-I-4f116bfa10e2415d93c5e50ba10e3591"
   />,
   // <CurriculumVitae />,
+  <SlopBox />,
   <OhYou />,
   <NotionPost
     emoji="📆"
