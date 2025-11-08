@@ -6,6 +6,7 @@ import { HireAnApprentice } from "./HireAnApprentice";
 import { MasonryDemo } from "./MasonryDemo";
 import { SlopBox } from "./SlopBox";
 // import { CurriculumVitae } from "./CurriculumVitae";
+import { ReactComponent as GrafanaIcon } from "icons/grafana.svg";
 
 export const CarouselItemSet = [
   <MilesJPool />,
@@ -15,6 +16,12 @@ export const CarouselItemSet = [
     headerImage="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf"
     href="https://milesjpool.notion.site/Elevating-my-desk-127ea37a280e808ab350ec64626f20ca"
     githubRepo={{ url: "https://github.com/Milesjpool/standing-desk" }}
+    extraIconLinks={[
+      {
+        href: "https://grafana.aesop.casa/public-dashboards/4751c3c137974d77a0905190a4f2ccc0",
+        Icon: GrafanaIcon,
+      },
+    ]}
   />,
   <WhatTheHex />,
   <NotionPost

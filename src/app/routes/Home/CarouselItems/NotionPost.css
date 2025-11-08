@@ -66,16 +66,17 @@
 
     .links {
       align-self: flex-end;
-      gap: 1em;
+      gap: 0.6em;
       align-items: center;
       max-width: 100%;
 
-      .notion-link {
+      .icon-link {
         a {
-          padding: 0.2em;
+          padding: 0.15em;
 
           .icon {
             height: 2.5em;
+            width: 2.5em;
           }
         }
       }

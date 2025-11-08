@@ -3,7 +3,7 @@ import { ReactComponent as NotionGem } from "icons/notion_gem.svg";
 import { ReactComponent as AuthorIcon } from "icons/notion/people.svg";
 import { GithubRepo } from "types/GithubRepo";
 import { COLOUR_FG_SECONDARY } from "styles";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FunctionComponent, type SVGAttributes } from "react";
 
 import "./NotionPost.css";
 
@@ -17,13 +17,17 @@ type NotionPostProps = {
   title: string;
   headerImage: string;
   href: string;
-  githubRepo?: GithubRepo
+  githubRepo?: GithubRepo;
+  extraIconLinks?: IconLinkDefinition[];
 }
 
-export function NotionPost({ title, emoji, headerImage, href, githubRepo }: NotionPostProps) {
+export function NotionPost({ title, emoji, headerImage, href, githubRepo, extraIconLinks }: NotionPostProps) {
   const links = [
     githubRepo && <GithubLink key={1} {...githubRepo} />,
-    <NotionLink key={2} />,
+    ...(extraIconLinks?.map((link, index) => (
+      <IconLink key={`extra-icon-${index}`} {...link} />
+    )) ?? []),
+    <NotionLink key="notion" />,
   ].filter(Boolean)
 
   return (
@@ -74,9 +78,21 @@ function LinksBlock({ links }: { links: React.ReactNode[] }) {
 
 function NotionLink() {
   return (
-    <div className="notion-link">
-      <a className="flex" href="https://notion.so" target="_blank" rel="noopener noreferrer">
-        <NotionGem className="icon" fill={COLOUR_FG_SECONDARY} />
+    <IconLink href="https://notion.so" Icon={NotionGem} fill={COLOUR_FG_SECONDARY} />
+  );
+}
+
+type IconLinkDefinition = {
+  href: string;
+  Icon: FunctionComponent<SVGAttributes<SVGElement>>;
+  fill?: string;
+}
+
+function IconLink({ href, Icon, fill }: IconLinkDefinition) {
+  return (
+    <div className="icon-link">
+      <a className="flex" href={href} target="_blank" rel="noopener noreferrer">
+        <Icon className="icon" fill={fill} />
       </a>
     </div>
   );
