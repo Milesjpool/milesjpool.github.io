@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.0cd4f489.css",
-    "main.js": "/static/js/main.4d5d8856.js",
+    "main.css": "/static/css/main.f6d780ba.css",
+    "main.js": "/static/js/main.98a16e15.js",
     "static/js/453.9b642663.chunk.js": "/static/js/453.9b642663.chunk.js",
     "static/media/title.png": "/static/media/title.7b83b3721600d88f6372.png",
+    "static/media/grafana.svg": "/static/media/grafana.318a39520bd6d8959f9973b9e8196931.svg",
     "static/media/github_pages_gem.svg": "/static/media/github_pages_gem.f763c408c2eb03d7b175b546fa719c09.svg",
     "static/media/react_gem.svg": "/static/media/react_gem.bd3166260f706de6b87f4e6e830f247b.svg",
     "static/media/springer_gem.svg": "/static/media/springer_gem.f75d9a5c2e5be4e9ee8391a4344fefaa.svg",
@@ -17,12 +18,12 @@
     "static/media/ai_gem.svg": "/static/media/ai_gem.ade62473233a8ca38bf769cccb883fa2.svg",
     "static/media/github_gem.svg": "/static/media/github_gem.61efae3371211cf99a50bc8ee8b821f6.svg",
     "static/media/gcp_gem.svg": "/static/media/gcp_gem.ae54a0b8f0deb32a3cd7e5a276399779.svg",
-    "main.0cd4f489.css.map": "/static/css/main.0cd4f489.css.map",
-    "main.4d5d8856.js.map": "/static/js/main.4d5d8856.js.map",
+    "main.f6d780ba.css.map": "/static/css/main.f6d780ba.css.map",
+    "main.98a16e15.js.map": "/static/js/main.98a16e15.js.map",
     "453.9b642663.chunk.js.map": "/static/js/453.9b642663.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0cd4f489.css",
-    "static/js/main.4d5d8856.js"
+    "static/css/main.f6d780ba.css",
+    "static/js/main.98a16e15.js"
   ]
 }
