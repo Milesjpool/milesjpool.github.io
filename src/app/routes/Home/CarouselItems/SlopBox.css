@@ -275,3 +275,57 @@
   vertical-align: super;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.keebo-hero {
+  --keebo-bg: #100f08;
+  --keebo-text: #e8d458;
+  --keebo-cursor: #e8c828;
+  --keebo-muted: #6a5e30;
+  --keebo-dim: #483e1a;
+
+  background-color: var(--keebo-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+  gap: 0;
+  font-family: ui-monospace, 'Cascadia Code', 'SF Mono', 'Fira Code', monospace;
+  height: 100%;
+  box-sizing: border-box;
+  container-type: inline-size;
+}
+
+.keebo-prompt {
+  font-size: 0.75em;
+  color: var(--keebo-dim);
+  margin-bottom: 0.2em;
+}
+
+.keebo-title {
+  font-size: clamp(1em, 14cqi, 1.8em);
+  font-weight: 500;
+  color: var(--keebo-text);
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+}
+
+.keebo-cursor {
+  color: var(--keebo-text);
+}
+
+.slop-box-card-link:hover .keebo-cursor {
+  background-color: var(--keebo-cursor);
+  color: var(--keebo-bg);
+  animation: keebo-blink 1s step-end infinite;
+}
+
+@keyframes keebo-blink {
+  0%, 100% { background-color: var(--keebo-cursor); color: var(--keebo-bg); }
+  50% { background-color: transparent; color: var(--keebo-text); }
+}
+
+.keebo-subtitle {
+  font-size: 0.7em;
+  color: var(--keebo-muted);
+  margin-top: 0.5em;
+}

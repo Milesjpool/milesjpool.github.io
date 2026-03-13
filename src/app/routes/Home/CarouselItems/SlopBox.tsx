@@ -3,6 +3,7 @@ import { ReactComponent as AiGem } from "icons/ai_gem.svg";
 
 const GUITAREX_URL = "https://www.milesjpool.com/guitarex-ai/";
 const GUITAREX_HERO = "/assets/guitarex-hero.png";
+const KEEBO_URL = "https://www.milesjpool.com/keebo";
 
 type CardStyle = {
   gridColumnStart: number;
@@ -11,16 +12,29 @@ type CardStyle = {
   gridRowEnd: number;
 };
 
-function GuitarExCard({ style, 'data-card-index': dataCardIndex }: { style: CardStyle; 'data-card-index'?: number }) {
+function CardLink({ href, style, 'data-card-index': dataCardIndex, children }: {
+  href: string;
+  style: CardStyle;
+  'data-card-index'?: number;
+  children: React.ReactNode;
+}) {
   return (
     <a
-      href={GUITAREX_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="slop-box-card slop-box-card-link"
       style={style}
       data-card-index={dataCardIndex}
     >
+      {children}
+    </a>
+  );
+}
+
+function GuitarExCard({ style, 'data-card-index': dataCardIndex }: { style: CardStyle; 'data-card-index'?: number }) {
+  return (
+    <CardLink href={GUITAREX_URL} style={style} data-card-index={dataCardIndex}>
       <div className="slop-box-card-hero">
         <img src={GUITAREX_HERO} alt="GuitarEx AI" />
       </div>
@@ -30,15 +44,27 @@ function GuitarExCard({ style, 'data-card-index': dataCardIndex }: { style: Card
           <div className="slop-box-card-subtitle"><span className="ai-blue">AI</span> generated guitar exercises</div>
         </div>
       </div>
-    </a>
+    </CardLink>
+  );
+}
+
+function KeeboCard({ style, 'data-card-index': dataCardIndex }: { style: CardStyle; 'data-card-index'?: number }) {
+  return (
+    <CardLink href={KEEBO_URL} style={style} data-card-index={dataCardIndex}>
+      <div className="slop-box-card-hero keebo-hero">
+        <div className="keebo-prompt">$</div>
+        <div className="keebo-title"><span className="keebo-cursor">k</span>eebo</div>
+        <div className="keebo-subtitle">touch typing, step by step</div>
+      </div>
+    </CardLink>
   );
 }
 
 export function SlopBox() {
-  const cards: (CardStyle & { content?: 'guitarex' })[] = [
+  const cards: (CardStyle & { content?: 'guitarex' | 'keebo' })[] = [
     { gridColumnStart: 1, gridColumnEnd: 2, gridRowStart: 1, gridRowEnd: 4, content: 'guitarex' },
     { gridColumnStart: 1, gridColumnEnd: 2, gridRowStart: 4, gridRowEnd: 7 },
-    { gridColumnStart: 2, gridColumnEnd: 3, gridRowStart: 1, gridRowEnd: 3 },
+    { gridColumnStart: 2, gridColumnEnd: 3, gridRowStart: 1, gridRowEnd: 3, content: 'keebo' },
     { gridColumnStart: 2, gridColumnEnd: 3, gridRowStart: 5, gridRowEnd: 7 },
     { gridColumnStart: 3, gridColumnEnd: 4, gridRowStart: 1, gridRowEnd: 3 },
     { gridColumnStart: 3, gridColumnEnd: 4, gridRowStart: 5, gridRowEnd: 7 },
@@ -56,6 +82,9 @@ export function SlopBox() {
         const { content, ...style } = card;
         if (content === 'guitarex') {
           return <GuitarExCard key={index} style={style} data-card-index={index} />;
+        }
+        if (content === 'keebo') {
+          return <KeeboCard key={index} style={style} data-card-index={index} />;
         }
         return <div key={index} className="slop-box-card" style={style} data-card-index={index}><AiGem /></div>;
       })}
